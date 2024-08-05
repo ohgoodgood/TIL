@@ -1,0 +1,178 @@
+/* RESETS */
+
+body {
+    margin: unset;
+}
+
+h1, ol {
+    margin-block: unset;
+    margin-inline: unset;
+    font-weight: unset;
+    font-size: unset;
+}
+
+ol {
+    list-style-type: none;
+    padding-inline-start: unset;
+}
+
+li {
+    text-align: unset;
+}
+
+/* LAYOUT */
+
+div.wrapper {
+    width: 960px;
+    min-height: 439px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.layer {
+    background-color: #ddd;
+    width: auto;
+    height: 344px;
+    margin: -13px -100px 0 -100px;
+}
+
+/* TYPOGRAPHY */
+
+:root {
+    font-family: arial;
+}
+
+/* DESIGN */
+
+body {
+    background-image: url(./images/header-bg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.wrapper {
+    color: #ffa500
+}
+
+.wrapper section.header {
+    color: #ffa500;
+
+    background-image: url(./images/container-bg.png);
+    background-repeat: no-repeat;
+    background-position: 556px 40px;
+
+    border: solid 30px #ffa500;
+    border-bottom: none;
+
+    padding: 60px;
+    box-sizing: border-box;
+}
+
+.wrapper section.header h1 {
+    font-size: 32px;
+    letter-spacing: 0.19em;
+    margin-bottom: 4px;
+}
+
+.wrapper section.header span.bold {
+    font-weight: bold;
+}
+
+.wrapper section.header div.underline {
+    background-color:#ffa500;
+    width: 373px;
+    height: 4px;
+    border-radius: 12px;
+
+    margin-bottom: 26px;
+}
+
+.wrapper section.header article {
+    width: 482px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+.layer ol.samples {
+    background-color: #ddd;
+
+    width: auto;
+
+    padding: 30px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.layer ol.samples li {
+    background-color: #ababab;
+    width: 300px;
+    height: 280px;
+
+    margin-left: 30px;
+
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+
+    display: flex;
+    align-items: flex-end;
+}
+
+.layer ol.samples li:first-child {
+    margin-left: 0px;
+}
+
+.layer ol.samples li.treehouse {
+    background-image: url(./images/type-a.png);
+}
+
+.layer ol.samples li.furniture {
+    background-image: url(./images/type-b.png);
+}
+
+.layer ol.samples li.wavewoods {
+    background-image: url(./images/type-c.png);
+}
+
+.layer ol.samples li h1 {
+    background-color: #fff;
+    width: 300px;
+    height: 50px;
+
+    border-top: solid 4px #ffa500;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+
+    color: #ffa500;
+    font-size: 16px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+
+    background-image: url(./images/play.png);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.layer section.footer {
+    background-color: #fff;
+    height: 54px;
+    border-top: solid 2px #aaa;
+
+    font-size: 14px;
+    font-weight: bold;
+    color: #aaa;
+    line-height: 1.6;
+    letter-spacing: 0.29em;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
