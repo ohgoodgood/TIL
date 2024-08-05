@@ -1,0 +1,51 @@
+/* CSS Reset */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Design */
+body {
+    background-color: #999;
+}
+
+article {
+    background-color: white;
+    width: 500px;
+    margin: 100px auto;
+    padding: 20px;
+    box-sizing: border-box; 
+    /* width값에 border, padding을 포함하여 계산 */
+
+    text-align: center;
+
+    border-radius: 20px 20px 0 0;
+
+    /*
+    border-width: 20px 30px 40px 10px;
+    border-style: dotted solid;
+    border-color: red blue purple orange;
+    */
+    border-bottom: 30px solid purple;
+}
+
+h1 {
+    color: brown;
+    font-size: 40px;
+    border-bottom: 10px solid brown;
+
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 0 20px;
+
+    background-color: blanchedalmond;
+}
+
+p {
+    background-color: #ddd;
+    padding: 40px;
+    border: 1px solid #999;
+    color: #888;
+}

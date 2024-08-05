@@ -1,0 +1,214 @@
+/* 첫 단계에서는 최소한의 컨텐츠만 넣어두고 레이아웃을 먼저 짜라 */
+/* semantic markup 잘 사용하기. 특히 레이아웃(식판)과 컴포넌트(반찬) 역할 구분. 예를 들어 wrapper class는 콘텐츠 통째의 정렬만을 담당한다 등. */
+/* class 잘 사용하기 */
+/* 레이아웃 짜기 - 각 컴포넌트에 배경색 줘서 공간 시각적으로 구분 -
+/* css 리셋은 유저 에이전트 속성값 들어간 거 발견될 때마다 슥삭. 요리 재료 손질하는 느낌. */
+/* 내용 채울 때 가장 먼저 폰트부터 파악 */
+/* 확장성을 고려하면 어떤 컴포넌트에 대한 클래스 작명은 상위요소와 엮지 말고 독립적으로 해 주는게 나을 때도 있음 특히 (CSS 관점에서) 시각적으로 차이가 크거나 교체 가능성이 있는 컴포넌트의 경우 독립시키는 게 나을 수 있음*/
+/* 클래스 작명은 항상!! 공통분모는 유지하고 플러스 알파를 더하는 개념 */
+
+/* reset
+
+body {
+    margin: unset;
+}
+
+ul {
+    list-style: none;
+    margin-block: unset;
+    margin-inline: unset;
+    padding-inline: unset;
+}
+
+h1 {
+    margin-inline: unset;
+    margin-block: unset;
+    font-weight: unset;
+    font-size: unset;
+}
+
+*/
+
+/* design
+
+html{
+    font-family: arial;
+}
+
+body {
+    background-color: #d9d9d9;
+}
+
+div.wrapper {
+    width: 448px;
+    min-height: 494px;    
+    margin: 110 auto;
+}
+
+div.header {
+    background-color: #ffffff;
+    
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff007a;
+
+    min-height: 120px;
+    
+    padding: 46px 0 46px 0;
+    box-sizing: border-box;
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+ul.contents {
+    background-color: #eeeeee;
+    
+    min-height: 374px;
+
+    padding: 36px 38px 38px 38px;
+    box-sizing: border-box;
+
+    border-top: 4px solid #dddddd;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+li {
+    background-color: #ffffff;
+
+    border: 4px solid #d9d9d9;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    
+
+    font-size: 16px;
+    font-weight: bold;
+    color: #888888;
+
+    padding: 15px 0 15px 14px;
+    box-sizing: border-box;
+}
+
+li.language {
+    border: 4px solid #759cff;
+
+    color: #759cff;
+}
+
+li.marathon {
+    margin-bottom: 0;
+}
+
+img.check {
+    width: 20px;
+    height: 20px;
+
+    position: relative;
+    left: 0px;
+    right: 0px;
+}
+
+*/
+
+/* RESET */
+body {
+    margin: unset;
+}
+
+h1 {
+    margin-inline: unset;
+    margin-block: unset;
+    font-size: unset;
+    font-weight: unset;
+}
+
+ul {
+    margin-inline: unset;
+    margin-block: unset;
+    padding-inline: unset;
+    list-style-type: none;
+}
+
+/* TYPOGRAPHY */
+:root {
+    font-family: arial;
+}
+
+/* DESIGN */
+body {
+    background-color: #d9d9d9;
+}
+
+div.wrapper {
+    width: 448px;
+    margin: 110px auto;
+}
+
+section.bucket_contents {
+    border-radius: 20px;
+}
+
+div.header {
+    background-color: #fff;
+    min-height: 120px;
+    border-bottom: 4px solid #ddd;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff007a;
+
+    padding: 44px 0;
+    box-sizing: border-box;
+}
+
+.header h1 {
+    border-left: solid 8px #ff007a;
+    padding-left: 23px;
+    box-sizing: border-box;
+
+    line-height: 1.1668;
+}
+
+ul.list {
+    background-color: #eee;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 4px 4px 0 rgb(0 0 0 / .1);
+
+    padding: 36px 38px 38px 38px;
+    box-sizing: border-box;
+}
+
+ul.list li {
+    font-size: 16px;
+    font-weight: bold;
+    color: #888;
+
+    line-height: 1.125;
+
+    background-color: #fff;
+    border: solid 4px #d9d9d9;
+    border-radius: 10px;
+    
+
+    padding: 11px 0 11px 10px;
+    box-sizing: border-box;
+}
+
+.list li + li {
+    margin-top: 14px;
+}
+
+.list li.language {
+    color: #759cff;
+    border-color:currentColor;
+    background-image: url(./images/check.png);
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+
+    box-shadow: 0px 4px 4px 0px rgb(0 0 0 / .1);
+
+}

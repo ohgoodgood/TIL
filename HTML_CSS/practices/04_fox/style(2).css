@@ -1,0 +1,78 @@
+/* css reset */
+body {
+    margin: initial;
+}
+
+h1 {
+    margin: initial;
+    padding: initial;
+    font-weight: initial;
+
+    margin-block-start: initial;
+    margin-block-end: initial;
+}
+
+/* design */
+body {
+    background-image: url(images/bg.png);
+    margin-top: 60px;
+    margin-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper {
+    width: 300px;
+    height: auto;
+
+    margin: 0 auto;
+}
+
+.fox_image {
+    display:block;
+
+    width: 300px;
+    height: 300px;
+}
+
+.grass_image {
+    display:block;
+
+    width: 300px;
+    height: 50px;
+}
+
+.content {
+    background-color: #9C6035;
+
+    color: #E8BC9C;
+    font-family: arial;
+    font-size: 16px;
+
+    height: fit-content;
+
+    padding: 10px 20px 10px 20px;
+
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    border-bottom: solid 10px #46260E;
+
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+
+    height: 41px;
+
+    color: #ffffff;
+}
+
+.letter {
+    margin-top: 10px;
+    margin-bottom: 30px;
+
+    width: 260px;
+    height: 144px;
+}

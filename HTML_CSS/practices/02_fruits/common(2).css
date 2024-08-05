@@ -1,0 +1,33 @@
+body {
+    background-image: url(./images/orange-bg.png);
+}
+
+div {
+    background-color: white;
+    width: auto; /* parent element 로부터 inherit 한 content area 만큼 꽉 참 */
+    height: auto; /* children element 의 content 높이에 맞춰 자동 계산 */
+
+    width: 400px;
+
+    margin: 100px auto;
+    padding: 40px;
+
+    border: 10px solid orange;
+
+    color: orange;
+
+    border-radius: 60px 10px 30px 50px;
+    border-top-left-radius: 20px;
+}
+
+img {
+    width: 100%; /* 왜 퍼센트로 하더라... */
+}
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    color: black; 
+}

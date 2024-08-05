@@ -1,0 +1,102 @@
+/* CSS reset */
+
+body, p, ul {
+    margin: initial;
+    padding: initial;
+}
+
+li {
+    list-style-type: none;
+}
+
+h1, h2 {
+    font-size: inherit; /* 'inherit' instead of 'initial' */
+    font-weight: inherit;
+    margin: initial;
+}
+
+/* design */
+
+body {
+    background-image: url(images/background.png);
+}
+
+.wrapper {
+    background-color: #ddd;
+    width: 800px;
+    margin: 60px auto;
+}
+
+.header {
+    background-size: cover;
+    background-image: url(images/cover.png);
+
+    text-align: center;
+    color: white;
+
+    height: auto;
+    min-height: 400px;
+    padding: 60px 0;
+    box-sizing: border-box;
+}
+
+.header img.profile {
+    border: 6px solid white;
+    border-radius: 50%;
+    width: 140px;
+}
+
+.header h1 {
+    font-size: 80px;
+    font-weight: bold;
+}
+
+.header p {
+    border-top: 8px solid;
+    width: fit-content;
+    margin: 4px auto;
+    padding: 4px 20px;
+}
+
+.section {
+    background-color: white;
+    margin: 20px;
+    padding: 20px;
+
+    background-repeat: no-repeat;
+    background-position: right 40px center;
+}
+
+.section.information {
+    background-image: url(images/icon-information.png);
+  }
+
+.section.skill {
+    background-image: url(images/icon-skills.png);
+}
+
+.section h2 {
+    font-size: 30px;
+    font-weight: bold;
+    color: green;
+    margin-bottom: 20px;
+}
+
+.list li {
+    padding: 30px 10px;
+    background-image: url(images/icon-close.png);
+    background-repeat: no-repeat;
+    padding-left: 90px;
+    transition: all .4s;
+}
+
+.list li:hover {
+    background-image: url(images/icon.png);
+}
+
+.footer {
+    background-color: #f4f4f4;
+    padding: 12px 0;
+    text-align: center;
+    color: #999;
+}

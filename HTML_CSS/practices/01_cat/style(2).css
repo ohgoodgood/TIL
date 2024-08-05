@@ -1,0 +1,43 @@
+/* css reset */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* design */
+body {
+    background-color: #999;
+}
+
+article {
+    background-color: white;
+    width: 500px;
+    margin: 100px auto; /* 상단 100픽셀, 좌우 가용공간 자동 계산해서 가운데 정렬 */
+    padding: 20px;
+    box-sizing: border-box; /* width 값 유지하면서 border 와 padding 값 반영 */
+
+    text-align: center; /* 이 때 이미지는 '대체 요소'이기 때문에 자체적인 크기와 비율을 갖고 있으며, 한 줄 꽉 채우는 block level 요소와 다르게 margin auto로 가운데 정렬 가능text-aling의 영향 받음*/
+    border-radius: 20px 20px 0 0;
+    border-bottom: 30px solid purple;
+}
+
+h1 {
+    color: brown;
+    font-size: 40px;
+    border-bottom: 10px solid;
+
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 0 20px;
+
+    background-color: blanchedalmond;
+}
+
+p {
+    background-color:#ddd;
+    padding: 40px;
+    border: 1px solid #999;
+    color: gray;
+}
