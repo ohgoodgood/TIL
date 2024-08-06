@@ -1,29 +1,72 @@
-/* Reset */
+/* RESETS */
 body {
-  margin: unset;
-  padding: unset;
+    margin: unset;
+    padding: unset;
 }
 
-/* Layouts */
-.l_wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-
-  box-shadow: inset 0 0 4px red;
+h1 {
+    margin-inline: unset;
+    margin-block: unset;
 }
 
-/* Typography */
+/* TYPOGRAPHY */
 :root {
-  font-family: arial;
+    font-family: arial;
 }
 
-/* Components */
+/* LAYOUTS */
+header {
+    box-shadow: inset 0 0 20px #999;
+}
+
+main {
+    box-shadow: inset 0 0 20px #487;
+}
+
+footer {
+    box-shadow: inset 0 0 20px #158;
+}
+
+.l_wrapper {                            /* l_wrapper는 레이아웃만을 담당한다. 클래스 지정하거나 해서 다른 역할 시키지 말기! */
+    box-shadow: inset 0 0 20px #456;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* DESIGN */
 body {
-  color: #999;
-  background-color: #111;
+    background-color: #111;
 }
 
-.contents {
-  background-color: #000;
+.header_contents {                      /* header_contents로 한번 더 감싸서 처리한 것  꼭 기억하기!! */
+    display: flex;
+    align-items: center;
 }
+
+.header_contents .logo {
+    width: 200px;
+    height: 44px;
+}
+
+.header_contents .intro {
+    font-size: 16px;
+    color: #999;
+}
+
+.intro::before {
+    content: "";
+    display: inline-block;
+    width: 64px;
+    height: 0px;
+    border: solid 1px #999;
+    margin: 0 20px 0 30px;
+    vertical-align: middle;
+}
+
+.header_contents .anger {
+    width: 140p;
+    height: 140px;
+    margin-left: auto;
+}
+
+
