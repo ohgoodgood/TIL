@@ -20,12 +20,8 @@ main {
     padding: 24px 0 24px 0;
     box-sizing: border-box;
 }
-footer {
-    box-shadow: inset 0 0 20px #158;
-}
 
 .l_wrapper {                            /* l_wrapper는 레이아웃만을 담당한다. 클래스 지정하거나 해서 다른 역할 시키지 말기! */
-    box-shadow: inset 0 0 20px #456;
     width: 1200px;
     margin: 0 auto;
 }
@@ -86,4 +82,19 @@ body {
     height: 340px;
     margin-left: auto;
     border-radius: 12px;
+}
+
+    /* footer */
+.footer .footer_container {
+    height: 77px;
+    display: flex;
+    align-items: center;
+}
+
+.footer_container .outro {
+    width: 271px;
+    height: 18px;
+    font-size: 16px;
+    color: #666;
+    font-weight: normal;
 }
