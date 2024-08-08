@@ -7,6 +7,15 @@ body {
 h1 {
     margin-inline: unset;
     margin-block: unset;
+    font-weight: normal;
+    font-size: unset;
+}
+
+ul {
+    margin-inline: unset;
+    margin-block: unset;
+    list-style-type: none;
+    padding-inline: unset;
 }
 
 /* TYPOGRAPHY */
@@ -77,11 +86,50 @@ body {
 }
 
 .main .main_sidebar {
-    background-color: #979797;
+    background-color: #111;
+    color: #999;
     flex-basis: 168px;
-    height: 340px;
     margin-left: auto;
     border-radius: 12px;
+}
+
+.main_sidebar .sidebar_header {
+    background-color: #000;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding-bottom: 11px;
+}
+
+.main_sidebar .sidebar_header .header_icon {
+    width: 16px;
+    height: 16px;
+}
+
+.main_sidebar .sidebar_header h1 {
+    margin-left: 25px;
+}
+
+.main_sidebar ul {
+    border-top: solid 1px #FA8073;
+}
+
+.main_sidebar ul h1 {
+    color: #FA8073;
+    font-size: 14px;
+
+    margin: 8px 0 21px 10px;
+}
+
+.main_sidebar ul li {
+    margin: 0 0 5px 19px;
+    font-size: 12px;
+}
+
+
+
+.main_sidebar ul li:last-child {
+    margin-bottom: 15px;
 }
 
     /* footer */
