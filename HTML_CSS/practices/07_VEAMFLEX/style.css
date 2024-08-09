@@ -4,7 +4,7 @@ body {
     padding: unset;
 }
 
-h1 {
+h1, h2, h3 {
     margin-inline: unset;
     margin-block: unset;
     font-weight: normal;
@@ -40,7 +40,8 @@ body {
     background-color: #111;
 }
 
-    /* header */
+/* header */
+
 .header_contents {                      /* header_contents로 한번 더 감싸서 처리한 것  꼭 기억하기!! */
     display: flex;
     align-items: center;
@@ -72,23 +73,27 @@ body {
     margin-left: auto;
 }
 
-    /* main */
-.main .main_container {
+/* contents */
+
+.contents .main_container {
     display: flex;
     min-height: 848px;
     gap: 20px;
 }
 
-.main .main_contents {
+.contents .main_contents {
     background-color: #979797;
     width: 1008px;
     border-radius: 12px;
 }
 
-.main .main_sidebar {
+/* sidebar */
+
+.contents .main_sidebar {
     background-color: #111;
     color: #999;
-    flex-basis: 168px;
+    width: 168px;
+    height: fit-content;
     margin-left: auto;
     border-radius: 12px;
 }
@@ -110,26 +115,30 @@ body {
     margin-left: 25px;
 }
 
-.main_sidebar ul {
-    border-top: solid 1px #FA8073;
+li.sidebar_item {
+    border-top: solid 1px #fa8073;
 }
 
-.main_sidebar ul h1 {
-    color: #FA8073;
+.sidebar_item h3 {
     font-size: 14px;
-
-    margin: 8px 0 21px 10px;
+    color: #fa8073;
+    margin: 8px 0 15px 10px;
 }
 
-.main_sidebar ul li {
-    margin: 0 0 5px 19px;
+ul.sidebar_sub {
+    padding: 0 0 15px 20px;
+    box-sizing: border-box;
+}
+
+.sidebar_sub li {
     font-size: 12px;
+    padding-top: 6px;
+    padding-bottom: 5px;
 }
 
-
-
-.main_sidebar ul li:last-child {
-    margin-bottom: 15px;
+/* 인접 형제 결합자 adjacent sibling combinator */
+.sidebar_sub li + li {
+    border-top: solid 1px #333;
 }
 
     /* footer */
