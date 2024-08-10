@@ -35,7 +35,6 @@ main {
     margin: 0 auto;
 }
 
-/* DESIGN */
 body {
     background-color: #111;
 }
@@ -77,7 +76,6 @@ body {
 
 .contents .main_container {
     display: flex;
-    min-height: 848px;
     gap: 20px;
 }
 
@@ -85,6 +83,80 @@ body {
     background-color: #979797;
     width: 1008px;
     border-radius: 12px;
+}
+
+.main_contents ul.l_row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* 이렇게 하면 반응형 안됨  */
+/*
+.l_col {
+    width: 320px;
+    padding: 24px 12px 24px 12px;
+    box-sizing: border-box;
+}
+*/
+
+.l_col {
+    width: calc( 100% / 3 );
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+
+/* 그리드 시스템 */
+.l_col_12_12 { width: 100%; }
+.l_col_11_12 { width: 91.66666667%; }
+.l_col_10_12 { width: 83.33333333%; }
+.l_col_9_12  { width: 75%; }
+.l_col_8_12  { width: 66.66666667%; }
+.l_col_7_12  { width: 58.33333333%; }
+.l_col_6_12  { width: 50%; }
+.l_col_5_12  { width: 41.66666667%; }
+.l_col_4_12  { width: 33.33333333%; }
+.l_col_3_12  { width: 25%; }
+.l_col_2_12  { width: 16.66666667%; }
+.l_col_1_12  { width: 8.33333333%; }
+
+/* 미디어 쿼리 */
+
+/* Tablets */
+@media ( max-width: 960px ) {
+    .l_col_tablet_12_12 { width: 100%; }
+    .l_col_tablet_11_12 { width: 91.66666667%; }
+    .l_col_tablet_10_12 { width: 83.33333333%; }
+    .l_col_tablet_9_12  { width: 75%; }
+    .l_col_tablet_8_12  { width: 66.66666667%; }
+    .l_col_tablet_7_12  { width: 58.33333333%; }
+    .l_col_tablet_6_12  { width: 50%; }
+    .l_col_tablet_5_12  { width: 41.66666667%; }
+    .l_col_tablet_4_12  { width: 33.33333333%; }
+    .l_col_tablet_3_12  { width: 25%; }
+    .l_col_tablet_2_12  { width: 16.66666667%; }
+    .l_col_tablet_1_12  { width: 8.33333333%; }
+  }
+  
+/* mobiles */
+@media ( max-width: 480px ) {
+    .l_col_mobile_12_12 { width: 100%; }
+    .l_col_mobile_11_12 { width: 91.66666667%; }
+    .l_col_mobile_10_12 { width: 83.33333333%; }
+    .l_col_mobile_9_12  { width: 75%; }
+    .l_col_mobile_8_12  { width: 66.66666667%; }
+    .l_col_mobile_7_12  { width: 58.33333333%; }
+    .l_col_mobile_6_12  { width: 50%; }
+    .l_col_mobile_5_12  { width: 41.66666667%; }
+    .l_col_mobile_4_12  { width: 33.33333333%; }
+    .l_col_mobile_3_12  { width: 25%; }
+    .l_col_mobile_2_12  { width: 16.66666667%; }
+    .l_col_mobile_1_12  { width: 8.33333333%; }
+  }
+
+/* 커버 이미지 오버플로우 안 되게  */
+.card_cover {
+    width: 100%;
 }
 
 /* sidebar */
@@ -141,7 +213,8 @@ ul.sidebar_sub {
     border-top: solid 1px #333;
 }
 
-    /* footer */
+/* footer */
+
 .footer .footer_container {
     height: 77px;
     display: flex;
