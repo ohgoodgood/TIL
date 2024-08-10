@@ -36,7 +36,8 @@ main {
 }
 
 .l_wrapper {                            /* l_wrapper는 레이아웃만을 담당한다. 클래스 지정하거나 해서 다른 역할 시키지 말기! */
-    width: 1200px;
+    /* 반응형 위해, width가 아닌 max-width */
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -59,6 +60,10 @@ body {
 .header_contents .intro {
     font-size: 16px;
     color: #999;
+
+    /**/
+    display: flex;
+    align-items: center;
 }
 
 .intro::before {
