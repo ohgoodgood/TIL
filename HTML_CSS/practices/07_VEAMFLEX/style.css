@@ -18,6 +18,11 @@ ul {
     padding-inline: unset;
 }
 
+a {
+    color: unset;
+    text-decoration: unset;
+}
+
 /* TYPOGRAPHY */
 :root {
     font-family: arial;
@@ -72,7 +77,7 @@ body {
     margin-left: auto;
 }
 
-/* contents */
+/* contents layout */
 
 .contents .main_container {
     display: flex;
@@ -80,7 +85,6 @@ body {
 }
 
 .contents .main_contents {
-    background-color: #979797;
     width: 1008px;
     border-radius: 12px;
 }
@@ -89,6 +93,10 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    /* 행 간격 주기 */
+    row-gap: 24px;
+    /* 열 간격 주면서 어긋난 정렬 되돌려주기 */
+    margin: 0 -12px;
 }
 
 /* 이렇게 하면 반응형 안됨  */
@@ -154,10 +162,54 @@ body {
     .l_col_mobile_1_12  { width: 8.33333333%; }
   }
 
-/* 커버 이미지 오버플로우 안 되게  */
-.card_cover {
+/* contents design */
+.card_cover {   /* 커버 이미지 오버플로우 안 되게 및 밑에 공간 안 뜨게  */
     width: 100%;
+    vertical-align: top;
 }
+
+section.card {
+    background-color: #222;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card_contents {
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.card_contents h2 {
+    font-size: 16px;
+    color: #ebb3bb;
+}
+
+.card_contents p {
+    font-size: 12px;
+    color: #999;
+    line-height: 18px;
+}
+
+.card_button {
+    background-color: #111;
+    margin: 10px 10px 0 10px;
+    border-radius: 10px;
+
+    color: #FF0000;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    line-height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
 
 /* sidebar */
 
