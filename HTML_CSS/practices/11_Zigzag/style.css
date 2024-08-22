@@ -76,7 +76,7 @@ a {
     min-height: 50vh;
 
     margin: 0 auto;
-    padding: 100px 0;
+    padding: 100px 30px;
     box-sizing: border-box;
 }
 
@@ -241,8 +241,8 @@ a {
 
 .contents.type-column {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
     gap: 30px;
 }
 
@@ -271,8 +271,8 @@ a {
 
 .column-card-main {        
     /* display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-template-columns: minmax(0, 100%);
+    grid-template-rows: repeat(auto-fit, minmax(0,1fr));
     gap: 20px; */
 
     display: flex;
@@ -302,12 +302,18 @@ a {
     font-size: 14px;
     color: var(--color-purple-100);
     font-weight: 500;
+
+    width: auto;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .column-card-title {
     font-size: 24px;
     font-weight: bold;
     color: var(--color-black-100);
+    min-height: calc(1.1em*2);
 }
 
 .column-card-article {
