@@ -6,13 +6,14 @@
 </head>
 <body>
     <input type="button" value="night" onclick="
+        var target = document.querySelector('body');
         if(this.value === 'night') {
-            document.querySelector('body').style.backgroundColor = 'black';
-            document.querySelector('body').style.color = 'white';
+            target.style.backgroundColor = 'black';
+            target.style.color = 'white';
             this.value = 'day';
         } else {
-            document.querySelector('body').style.backgroundColor = 'white';
-            document.querySelector('body').style.color = 'black';
+            target.style.backgroundColor = 'white';
+            target.style.color = 'black';
             this.value = 'night';
         }
     ">
@@ -28,5 +29,5 @@
             this.value = 'night';
         }
     ">
-</body>
 </html>
+</body>
