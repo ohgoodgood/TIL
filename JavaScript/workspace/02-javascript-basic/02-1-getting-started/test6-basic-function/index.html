@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="dialogTest()">Dialog Test</button>
+    </div>
+
+    <script>
+        const dialogTest = () => {
+            /*
+                let result1 = alert('안녕하세요')
+                console.log('alert result ' + result1)
+                
+                // 콘솔에는 'alert result undefined'가 출력된다. 이는 alert() 함수가 단순히 경고창을 띄울 뿐, 아무런 값도 반환하지 않는 함수이기 때문이다. 따라서 result값에 undefined가 할당된다.
+            */
+
+            /*
+                let result2 = confirm('로그인 화면으로 이동하시겠어요?')
+                console.log('confirm result ' + result2)
+                
+                // 팝업창에서 'OK' 누른 경우: 콘솔에 'confirm result true' 출력
+                // 팝업창에서 'Cancel' 누른 경우: 콘솔에 'confirm result false' 출력
+                
+                if (result2) {
+                    console.log('로그인 화면으로 이동합니다')
+                } else {
+                    console.log('로그인 화면으로 이동하지 않습니다')
+                }
+
+                // 팝업창에서 'OK' 누른 경우: 콘솔에 'confirm result true', '로그인 화면으로 이동합니다' 출력
+                // 팝업창에서 'Cancel' 누른 경우: 콘솔에 'confirm result false', '로그인 화면으로 이동하지 않습니다' 출력
+            */
+
+            let result3 = prompt('숫자를 입력해 주세요')
+            console.log('prompt result ' + result3)
+
+            // 팝업창에서 숫자 1234를 입력하고 'OK' 누른 경우: 콘솔창에 'prompt result 1234' 출력. 사용자가 입력한 문자열이 출력된 것.
+            // 팝업창에서 숫자를 입력하지 않고 'OK'버튼만 누른 경우: 콘솔창에 'prompt result ' 출력. 빈 문자열이 출력된 것.
+            // 팝업창에서 'Cancel' 버튼을 누른 경우: 콘솔창에 'prompt result null' 출력. prompt() 함수는 사용자가 'Cancel'을 누른 경우 `null` 값을 반환한다.
+
+        }
+    </script>
+
+    <div>
+        <button onclick="wirteTest()">Write Test</button>
+    </div>
+
+    <script>
+        const wirteTest = () => {
+            let name = prompt('이름을 입력해 주세요')
+
+            document.write (
+                '<div>안녕하세요 <b style="color:blue;">'
+                + name +
+                '</b>님, 환영합니다. </div>'
+            )
+        }
+    </script>
+
+    <div>
+        <button onclick="consoleTest()">Console Test</button>
+    </div>
+
+    <script>
+        const consoleTest = () => {
+            console.log('첫 번째 로그 출력입니다. ')
+            console.log('두 번째 로그 출력입니다.', '홍길동', '김길동', '이길동')
+            console.log('세 번째 로그 출력입니다.', 10, true)
+        }
+    </script>
+</body>
+</html>
