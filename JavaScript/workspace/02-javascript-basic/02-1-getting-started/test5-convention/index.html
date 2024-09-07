@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 자바스크립트는 대소문자를 구분한다.
+        let data = "hello";
+        if(data === "Hello"){
+            console.log('data는 Hello입니다.')
+        } else {
+            console.log('data는 Hello가 아닙니다.')
+        }
+
+        /*
+        let data = "world"
+        에러 발생: "Uncaught SyntaxError: Identifier 'data' has already been declared (at index.html:18:13)"
+        똑같은 변수에 이미 데이터가 대입되어 있어서
+        */
+
+        // 대소문자를 다르게 하면 다른 변수로 인식!
+        let Data = 'world'
+
+        // 자바스크립트는 세미콜론을 강제하지는 않지만... 웬만하면 쓰는 게 낫지 않을까?
+        let data1 = 10;
+        let result1 = data1 * 10;
+        console.log(result1);
+    </script>    
+</body>
+</html>
