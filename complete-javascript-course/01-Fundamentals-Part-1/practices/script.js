@@ -9,3 +9,12 @@ let firstName = "Matilda"; // 여기서 값을 바꿔주면 같은 변수가 사
 console.log(firstName);
 console.log(firstName);
 console.log(firstName);
+
+let jonas_matilda = "JM";
+let $function = 27;
+
+let person = "jonas";
+let PI = 3.1415;
+
+let myFirstJob = 'Programmer';
+let myCurrentJob = 'Teacher';
