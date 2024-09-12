@@ -161,3 +161,33 @@ if (birthYear <= 2000) {
 }
 console.log(century);
 */
+
+// Chapter 20. Type Conversion and Coercion
+/*
+// type conversion (deliberately converting data type)
+const inputYear = '1991';
+console.log(Number(inputYear), inputYear); // return a converted(string->number) value
+// NOTE! the original value '1991' is still a string data. It's not changed.
+console.log(Number(inputYear) + 18);
+
+console.log(Number('Jonas')); // NaN (Not a Number) 출력됨
+console.log(typeof NaN); // 'Number' returned. NaN is an 'invalid number'. Though somewhat weird, it's still considered a number by JS.
+
+console.log(String(23), 23); // return a converted(number->string) value
+
+// type coercion (automatic)
+console.log('I am ' + 23 + ' years old'); // '23' is coerced to a string
+console.log('I am ' + String(23) + ' years old'); // '23' is converted to a string
+console.log('23' - '10' - 3); // string -> number coercion
+console.log('23' + '10' + 3); // number -> string coercion
+console.log('23' * '2'); // string -> number
+console.log('23' / '2'); // string -> number
+
+let n = '1' + 1; // '11'
+n = n - 1; // 11 - 1 = 10
+console.log(n);
+
+console.log(2 + 3 + 4 + '5'); // "95"
+
+console.log('10' - '4' - '3' - 2 + '5'); // "15"
+*/
