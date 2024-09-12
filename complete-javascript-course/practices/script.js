@@ -1,3 +1,4 @@
+// Up to chapter 10 //
 /*
 let js = 'amazing';
 console.log(40 + 8 + 23 - 10);
@@ -22,10 +23,9 @@ let myFirstJob = 'Programmer';
 let myCurrentJob = 'Teacher';
 
 console.log(myFirstJob);
-
--- up to chapter 10 --
 */
 
+// Chapter 11 //
 /*
 let javascriptIsFun = true;
 console.log(javascriptIsFun);
@@ -45,10 +45,9 @@ console.log(typeof year);
 
 year = 1991;
 console.log(typeof year);
-
--- up to chapter 11 --
 */
 
+// Chapter 12 //
 /*
 let age = 30;
 age = 31; // 'reassigning a value to a variable' or 'mutating a variable'
@@ -64,10 +63,10 @@ job = 'teacher';
 /* This is a poor idea
 lastName = 'Kim';
 console.log(lastName);
-
--- up to chapter 12 --
 */
 
+// Chapter 13 //
+/*
 // Math operators
 const now = 2037;
 const ageJonas = now - 1991;
@@ -96,3 +95,69 @@ console.log(ageSarah >= 18);
 const isFullAge = ageSarah >= 18;
 
 console.log(now - 1991 > now - 2018);
+*/
+
+// Chapter 14 //
+/*
+const now = 2037;
+const ageJonas = now - 1991;
+const ageSarah = now - 2018;
+
+// Operator precedence
+
+console.log(now - 1991 > now - 2018);
+
+let x, y;
+x = y = 25 - 10 - 5; // x = y = 10
+console.log(x, y);
+
+const averageAge = (ageJonas + ageSarah) / 2
+console.log(ageJonas, ageSarah, averageAge);
+*/
+
+// Chapter 17. Strings and Template Literals //
+/*
+const firstName = "Juseok";
+const job = 'programmer';
+const birthYear = 1995;
+const year = 2024;
+
+const juseok = "I'm " + firstName + ", a " + (year - birthYear) + " years old " + job + "!";
+console.log(juseok);
+
+const juseokNew = `I'm ${firstName}, a ${year - birthYear} years old ${job}!`;
+console.log(juseokNew);
+
+console.log(`Just a regular string...`);
+
+console.log('String with \n\
+multiple \n\
+lines');
+
+console.log(`String with
+multiple
+lines`);
+*/
+
+// Chapter 18. Taking Decisions: if / else Statements //
+/*
+const age = 15;
+
+// If-else Control Structure
+if (age >= 18) {
+    console.log('Sarah can start driving license');
+} else {
+    const yearsLeft = 18 - age;
+    console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`);
+}
+
+const birthYear = 2012;
+
+let century;
+if (birthYear <= 2000) {
+    century = 20;
+} else {
+    century = 21;
+}
+console.log(century);
+*/
