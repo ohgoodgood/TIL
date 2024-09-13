@@ -191,3 +191,29 @@ console.log(2 + 3 + 4 + '5'); // "95"
 
 console.log('10' - '4' - '3' - 2 + '5'); // "15"
 */
+
+// Chapter 21. Turthy and Falsy Values
+/*
+
+// 5 falsy values: 0, '', undefined, null, NaN
+
+console.log(Boolean(0));
+console.log(Boolean(undefined));
+console.log(Boolean(''));
+console.log(Boolean('Jonas'));
+console.log(Boolean({}));
+
+const money = 0;
+if (money) { // money is coerced into a boolean. 0 (falsy) -> boolean : false
+    console.log("Don't spend it all");
+} else {
+    console.log("You should get a job!");
+}
+
+let height;
+if (height) { // height is undefined (falsy) -> boolean : false
+    console.log('YAY! Height is defined');
+} else {
+    console.log('Height is undefined');
+}
+*/
