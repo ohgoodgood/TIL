@@ -217,3 +217,44 @@ if (height) { // height is undefined (falsy) -> boolean : false
     console.log('Height is undefined');
 }
 */
+
+// Chapter 22. Equality Operators
+/*
+const age = '18';
+if (age === 18) console.log('You just became an adult :D (strict)'); // strict equality operator is strongly recommended!
+
+if (age == 18) console.log('You just became an adult :D (loose)'); // just assume it doesn't exist ;)
+
+
+const favourite = prompt("What's your favourite number?");
+console.log(favourite);
+console.log(typeof favourite);
+
+if (favourite == 23) { // '23' == 23
+    console.log('Cool! 23 is an amazing number!');
+}
+
+if (favourite === 23) { // '23' /=== 23
+    console.log('woolawoola');
+}
+
+
+const favourite = Number(prompt("What's your favourite number?"));
+console.log(favourite);
+console.log(typeof favourite);
+
+if (favourite === 23) { // 23 === 23
+    console.log('Cool! 23 is an amazing number!');
+} else if (favourite === 7) {
+    console.log('7 is also a cool number');
+} else if (favourite === 9) {
+    console.log('9 is also a cool number');
+} else {
+    console.log('Number is not 23 nor 7 nor 9');
+}
+
+if (favourite !== 23) {
+    console.log('Why not 23?');
+}
+*/
+
