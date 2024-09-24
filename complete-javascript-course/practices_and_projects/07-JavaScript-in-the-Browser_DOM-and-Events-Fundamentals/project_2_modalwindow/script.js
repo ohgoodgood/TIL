@@ -52,3 +52,21 @@ for (let i = 0; i < btnsOpenModal.length; i++) {
 
 btnsCloseModal.addEventListener(`click`, closeModal);
 overlay.addEventListener(`click`, closeModal);
+
+// 키보드 입력 이벤트 (글로벌 이벤트) 리슨하기
+// document.addEventListener('keydown', function () {
+//   console.log(`A key was pressed`);
+// });
+// 이 때는 아무 키나 눌러도 함수 동작. 그리고 그럴 때마다 매번 객체가 생성됨.
+// 이벤트가 발생할 때, 이벤트 핸들러 함수를 통해 해당 이벤트에 대한 정보에 접근할 수 있다.
+// 어떤 키가 눌렸는지 알아보자
+document.addEventListener('keydown', function (e) {
+  console.log(e);
+  console.log(e.key); // 'e' 객체의 'key' property 출력. 어떤 키가 눌렸는지 볼 수 있다
+
+  if (e.key === `Escape` && !modal.classList.contains(`hidden`)) {
+    // 'Escape' 키가 눌렸고, modal이 'hidden' 클래스를 포함하고 있지 않다면!
+    closeModal();
+  }
+});
+// 키가 눌리면(이벤트 발생) -> 자바스크립트 엔진이 핸들러 함수를 호출하고 -> 이벤트 객체를 해당 함수의 argument로 parameter 'e'에 전달
