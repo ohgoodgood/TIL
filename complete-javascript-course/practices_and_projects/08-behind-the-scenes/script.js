@@ -83,3 +83,39 @@ console.log(x === window.x); // true: 'var' creates a property on the global win
 console.log(y === window.y); // false
 console.log(z === window.z); // false
 */
+
+//// 'this' keyword practice ////
+/*
+console.log(this); // window object
+
+const calcAge = function (birthYear) {
+  console.log(2037 - birthYear);
+  console.log(this); // undefined
+};
+calcAge(1991);
+
+const calcAgeArrow = birthYear => {
+  console.log(2037 - birthYear);
+  console.log(this); // window object. arrow function doesn't have its own 'this' keyword. so 'lexical this'(in this case the global 'this') is used.
+};
+calcAgeArrow(1980);
+
+const jonas = {
+  year: 1991,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+  },
+};
+jonas.calcAge(); // jonas is calling (is the owner of) the method here. so 'this' is jonas here.
+
+const matilda = {
+  year: 2017,
+};
+
+matilda.calcAge = jonas.calcAge; // method borrowing
+matilda.calcAge(); // method 'calcAge' is written in the jonas object, but here 'this' is pointing to matilda cause matilda is calling the method here.
+
+const f = jonas.calcAge; // coping a function into a variable
+f(); // 'this' is undefined here. 'f' is not attached to any object. no owner for the 'f' function.
+*/
