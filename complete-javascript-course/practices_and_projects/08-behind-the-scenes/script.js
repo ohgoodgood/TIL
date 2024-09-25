@@ -119,3 +119,53 @@ matilda.calcAge(); // method 'calcAge' is written in the jonas object, but here 
 const f = jonas.calcAge; // coping a function into a variable
 f(); // 'this' is undefined here. 'f' is not attached to any object. no owner for the 'f' function.
 */
+
+//// regular and arrow functions with 'this' keyword ////
+/*
+const jonas = {
+  firstName: 'Jonas',
+  year: 1991,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+
+    // solution 1
+    // const self = this; // this가 undefined 되는 것을 방지하는 방법. self 또는 that 사용
+    // const isMillenial = function () {
+    //   //   console.log(this); // undefined
+    //   //   console.log(this.year >= 1981 && this.year <= 1996);
+    //   console.log(self);
+    //   console.log(self.year >= 1981 && self.year <= 1996);
+    // };
+
+    // solution 2
+    const isMillenial = () => {
+      // use arrow function which inherits parent's scope. 'this' becomes 'jonas' object this time.
+      console.log(this);
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+    isMillenial();
+  },
+
+  greet: () => console.log(`Hey ${this.firstName}`), // arrow function doesn't have own 'this' keyword -> uses parent's(global in this case) 'this' keyword(window object in this case)
+}; // this is not a code block. it's an object literal. so, contents are still under global scope.
+jonas.greet();
+console.log(this.firstName);
+// NEVER USE an arrow function as a method! //
+
+jonas.calcAge();
+
+// arguments keyword
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+addExpr(2, 5);
+addExpr(2, 5, 8, 12);
+
+var addArrow = (a, b) => {
+  console.log(arguments);
+  return a + b;
+};
+addArrow(2, 5, 8); // arguments keywords also only exist in regular functions, not in arrow functions.
+*/
