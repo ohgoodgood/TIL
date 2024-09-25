@@ -1,5 +1,7 @@
 'use strict';
 
+//// scoping practice ////
+/*
 function calcAge(birthYear) {
   const age = 2037 - birthYear;
 
@@ -36,3 +38,48 @@ const firstName = 'Jonas';
 calcAge(1991);
 // console.log(age);
 // printAge();
+*/
+
+//// hoisting ////
+/*
+// variables
+// console.log(me); // undefined
+// console.log(job); // Cannot access '~' before initialization
+// console.log(year); // Cannot access '~' before initialization
+
+var me = 'Jonas';
+let job = 'teacher';
+const year = 1991;
+
+// functions
+console.log(addDecl(2, 3));
+// console.log(addExpr(2, 3)); // Cannot access '~' before initialization
+// console.log(addArrow(2, 3)); // addArrow is not a function: b/c addArrow is still undefined here, b/c it's declared with 'var'. undefined(2, 3) is not a function.
+
+function addDecl(a, b) {
+  return a + b;
+}
+
+const addExpr = function (a, b) {
+  return a + b;
+};
+
+var addArrow = (a, b) => a + b;
+
+// example
+if (!numProducts) deleteShoppingCart(); // numProducts is 'undefined' here, which is a falshy value.
+
+var numProducts = 10;
+
+function deleteShoppingCart() {
+  console.log(`All products deleted!`);
+}
+
+var x = 1;
+let y = 2;
+const z = 3;
+
+console.log(x === window.x); // true: 'var' creates a property on the global window object
+console.log(y === window.y); // false
+console.log(z === window.z); // false
+*/
