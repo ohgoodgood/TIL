@@ -73,7 +73,41 @@ restaurant.orderDelivery({
   starterIndex: 1,
 });
 
+//// short circuiting ////
+// use any data type, return any data type: short-circuiting (short-circuit evaluation)
+// OR operator returns the first truthy value or the last value of all the operands if all are falsy. practically, we can use it to set default values.
+// AND operator returns the first falsy value or the last value of all the operands if all are truthy. practically, we can use it to execute the second operand if the first one is true.
+
+console.log(`---- OR ----`);
+console.log(3 || 'Jonas'); // 3
+console.log('' || 'Jonas'); // Jonas
+console.log(true || 0); // true
+console.log(undefined || null); // null
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null); // Hello
+
+// practical example. two codes here do the same work!
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log(`---- AND ----`);
+console.log(0 && 'Jonas');
+console.log(7 && 'Jonas');
+
+console.log('Hello' && 23 && null && 'jonas');
+
+// practical example. two codes here do the same work
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
 //// rest pattern and parameters ////
+/*
 // (usecase 1) destructuring
 
 // [note] rest is the opposite of spread
@@ -115,6 +149,7 @@ add(...x);
 
 restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
 restaurant.orderPizza('mushrooms');
+*/
 
 //// spread operator ////
 /*
