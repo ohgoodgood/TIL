@@ -73,6 +73,43 @@ restaurant.orderDelivery({
   starterIndex: 1,
 });
 
+////////// logical assignment operators //////////
+/*
+const rest1 = {
+  name: 'Capri',
+  // numGuests: 20,
+  numGuests: 0,
+};
+
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi',
+};
+
+// OR operator short-circuiting
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+
+// same work using OR assignment operator '||='. assign a value to a variable if it is currently falsy.
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+
+// using nullish assignment operator '??='
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+// AND operator short-circuiting
+// rest1.owner = rest1.owner && '<ANONYMOUS>';
+// rest2.owner = rest2.owner && '<ANONYMOUS>';
+
+// same work using AND assignment operator '&&='. assign a value to a varialbe if it is currently truthy.
+rest1.owner &&= '<ANONYMOUS>';
+rest2.owner &&= '<ANONYMOUS>';
+
+console.log(rest1);
+console.log(rest2);
+*/
+
 ////////// nullish coalescing operator //////////
 /*
 restaurant.numGuests = 0;
