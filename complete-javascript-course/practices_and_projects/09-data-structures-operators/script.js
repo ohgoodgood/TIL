@@ -77,6 +77,7 @@ restaurant.orderDelivery({
 // (usecase 1) destructuring
 
 // [note] rest is the opposite of spread
+// [note] spread is used where we otherwise would use multiple values with comma.
 // [note] rest pattern is used where we otherwise would use multiple variables with commas. NOT values!
 
 // spread: on the right side of '='
@@ -90,7 +91,7 @@ const [p, , r, ...otehrFood] = [
   ...restaurant.starterMenu,
 ];
 console.log(p, r, otehrFood);
-// NOTE THAT rest element doesn't include skipped values. it should always be the last element.
+// NOTE THAT rest element doesn't include skipped variables. it should always be the last element.
 
 // rest working on objects
 const { sat, ...weekdays } = restaurant.openingHours;
@@ -99,7 +100,7 @@ console.log(weekdays);
 // (usecasse 2) functions (rest parameter)
 // 몇 개의 argument가 전달될지 모를 때, 어쨌든 전부 다 parameter에 전달할 수 있음
 const add = function (...numbers) {
-  console.log(numbers); // 전달된 argument들을 array로 묶음
+  console.log(numbers); // 전달된 argument들이 array로 묶인 것을 확인할 수 있음
   let sum = 0;
   for (let i = 0; i < numbers.length; i++) sum += numbers[i];
   console.log(sum);
