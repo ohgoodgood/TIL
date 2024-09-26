@@ -73,7 +73,19 @@ restaurant.orderDelivery({
   starterIndex: 1,
 });
 
-//// short circuiting ////
+////////// nullish coalescing operator //////////
+/*
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10; // 위에서 0 할당한게 falsy라서 안먹히고 기본값 10이 출력되는 문제 발생
+console.log(guests);
+
+// nullish: null and undefined (NOT including 0 or '')
+const guestCorrect = restaurant.numGuests ?? 10; // 여기선 문제 해결됨. '??' 때문에. '??'는 nullish value에 대해서 단축평가를 수행한다. 그런데 여기서 0은 nullish value가 아니므로, 0이 출력됨. numGuests가 undefined인 경우에는 10이 출력.
+console.log(guestCorrect);
+*/
+
+////////// short circuiting //////////
+/*
 // use any data type, return any data type: short-circuiting (short-circuit evaluation)
 // OR operator returns the first truthy value or the last value of all the operands if all are falsy. practically, we can use it to set default values.
 // AND operator returns the first falsy value or the last value of all the operands if all are truthy. practically, we can use it to execute the second operand if the first one is true.
@@ -105,8 +117,9 @@ if (restaurant.orderPizza) {
 }
 
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+*/
 
-//// rest pattern and parameters ////
+////////// rest pattern and parameters //////////
 /*
 // (usecase 1) destructuring
 
@@ -151,7 +164,7 @@ restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
 restaurant.orderPizza('mushrooms');
 */
 
-//// spread operator ////
+////////// spread operator //////////
 /*
 const arr = [7, 8, 9];
 const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
@@ -210,7 +223,7 @@ console.log(restaurantCopy.name);
 console.log(restaurant.name);
 */
 
-//// destructuring objects ////
+////////// destructuring objects //////////
 /*
 const { name, openingHours, categories } = restaurant;
 console.log(name, openingHours, categories);
@@ -241,7 +254,7 @@ const {
 console.log(o, c);
 */
 
-//// destructuring arrays ////
+////////// destructuring arrays //////////
 /*
 const arr = [2, 3, 4];
 const a = arr[0];
