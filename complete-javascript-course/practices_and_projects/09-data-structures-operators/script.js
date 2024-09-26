@@ -53,6 +53,11 @@ const restaurant = {
       `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}.`
     );
   },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
 
 restaurant.orderDelivery({
@@ -68,7 +73,50 @@ restaurant.orderDelivery({
   starterIndex: 1,
 });
 
+//// rest pattern and parameters ////
+// (usecase 1) destructuring
+
+// [note] rest is the opposite of spread
+// [note] rest pattern is used where we otherwise would use multiple variables with commas. NOT values!
+
+// spread: on the right side of '='
+const arr = [1, 2, ...[3, 4]];
+// rest: on the left side of `=`
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others); // 1, 2, [3, 4, 5]
+
+const [p, , r, ...otehrFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(p, r, otehrFood);
+// NOTE THAT rest element doesn't include skipped values. it should always be the last element.
+
+// rest working on objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+// (usecasse 2) functions (rest parameter)
+// 몇 개의 argument가 전달될지 모를 때, 어쨌든 전부 다 parameter에 전달할 수 있음
+const add = function (...numbers) {
+  console.log(numbers); // 전달된 argument들을 array로 묶음
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+
+add(2, 3);
+add(5, 3, 7, 2);
+add(8, 2, 5, 3, 2, 1, 4);
+
+const x = [23, 5, 7];
+add(...x);
+
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+restaurant.orderPizza('mushrooms');
+
 //// spread operator ////
+/*
 const arr = [7, 8, 9];
 const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
 console.log(badNewArr); // [1, 2, 7, 8, 9]
@@ -124,6 +172,7 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = 'Ristorante Roma';
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
+*/
 
 //// destructuring objects ////
 /*
