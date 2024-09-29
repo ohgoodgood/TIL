@@ -2,10 +2,8 @@
 
 //////////////////// Coding Challenge #1 ////////////////////
 /* 
-We're building a football betting app (soccer for my American friends 😅)!
-
-TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Then, call the function again with players from game.scored
-*/
+//We're building a football betting app (soccer for my American friends 😅)!
+// TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Then, call the function again with players from game.scored
 
 // DATA //
 const game = {
@@ -85,6 +83,7 @@ printGoals(...game.scored);
 team1 < team2 && console.log(`Team1 is more likely to win`);
 team1 > team2 && console.log(`Team2 is more likely to win`);
 team1 === team2 && console.log(`It's a tie`);
+*/
 
 //////////////////// LECTURE ////////////////////
 
@@ -160,6 +159,22 @@ restaurant.orderDelivery({
   address: 'Via del Sole, 21',
   starterIndex: 1,
 });
+
+////////// looping arrays: the for-or loop //////////
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+// for (const item of menu.entries()) {
+//   console.log(`${item[0] + 1}: ${item[1]}`);
+// }
+
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+
+// (걍 참고) console.log([...menu.entries()]);
 
 ////////// logical assignment operators //////////
 /*
