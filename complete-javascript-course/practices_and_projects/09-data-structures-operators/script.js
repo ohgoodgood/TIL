@@ -160,7 +160,7 @@ restaurant.orderDelivery({
   starterIndex: 1,
 });
 
-////////// looping arrays: the for-or loop //////////
+////////// looping arrays: the for-of loop //////////
 
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
