@@ -131,9 +131,9 @@ const restaurant = {
   // 아래 'restaurant.orderDelivery' 객체를 argument로 받으면서, 바로 destructure까지 하는 방법
   // default value도 지정 가능
   orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
-    console.log(
-      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}.`
-    );
+    // console.log(
+    //   `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}.`
+    // );
   },
 
   orderPasta(ing1, ing2, ing3) {
@@ -161,8 +161,33 @@ restaurant.orderDelivery({
   starterIndex: 1,
 });
 
-////////// optional chaining //////////
+////////// looping objects: object keys, values, entries //////////
 
+// Property NAMES
+const properties = Object.keys(openingHours);
+console.log(properties);
+// console.log(`We are open on ${properties.length} days`);
+let openStr = `We are open on ${properties.length} days: `;
+
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+console.log(openStr);
+
+// Property VALUES
+const values = Object.values(openingHours);
+console.log(values);
+
+// Looping entire object
+const entries = Object.entries(openingHours);
+
+// Using destructuring
+for (const [key, { open, close }] of entries) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
+}
+
+////////// optional chaining //////////
+/*
 // W/O optional chaning
 if (restaurant.openingHours && restaurant.openingHours.mon) {
   console.log(restaurant.openingHours.mon.open);
@@ -190,6 +215,7 @@ console.log(restaurant.orderRisotto?.(0, 1) ?? 'Method does not exist');
 const users = [{ name: 'Jonas', email: 'hello@jonas.io' }];
 
 console.log(users[0]?.name ?? `User array empty`);
+*/
 
 ////////// enhanced object literals //////////
 
