@@ -248,7 +248,47 @@ restaurant.orderDelivery({
   starterIndex: 1,
 });
 
+////////// Maps //////////
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+console.log(rest.set(2, 'Lisbon, Portugal'));
+
+// calling set method returns updated map, so we can call set again on that map (chaining)
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open')
+  .set(false, 'We are closed');
+
+console.log(rest.get('name'));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 21;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+console.log(rest.has('categories'));
+rest.delete(2);
+console.log(rest);
+console.log(rest.size);
+// rest.clear();
+
+// rest.set([1, 2], 'Test');
+// console.log(rest);
+// console.log(rest.get([1, 2])); // 위의 [1, 2]와 여기의 [1, 2]는 HEAP 상에서 각각 다른 객체다. 그래서 이 코드는 undefined 나옴
+
+const arr = [1, 2];
+rest.set(arr, 'Test');
+console.log(rest);
+console.log(rest.get(arr));
+// now it works
+
+rest.set(document.querySelector('h1'), 'Heading');
+
 ////////// Sets //////////
+/*
 const ordersSet = new Set([
   'Pasta',
   'Pizza',
@@ -283,6 +323,7 @@ console.log(
 );
 
 console.log(new Set('jonasschmedtmann').size);
+*/
 
 ////////// looping objects: object keys, values, entries //////////
 /*
