@@ -1,7 +1,7 @@
 'use strict';
 
 //////////////////// Coding Challenge #3 ////////////////////
-
+/*
 // DATA //
 const gameEvents = new Map([
   [17, '⚽️ GOAL'],
@@ -43,6 +43,7 @@ for (const [min, event] of gameEvents) {
   const half = min <= 45 ? `FIRST` : `SECOND`;
   console.log(`[${half} HALF] ${min}: ${event}]`);
 }
+*/
 
 //////////////////// Coding Challenge #2 ////////////////////
 /*
@@ -216,13 +217,13 @@ team1 > team2 && console.log(`Team2 is more likely to win`);
 team1 === team2 && console.log(`It's a tie`);
 */
 
-//////////////////// LECTURE ////////////////////
+//////////////////////////////////////// LECTURE ////////////////////////////////////////
 
-// Data needed for a later exercise
+////////// Data needed for a later exercise //////////
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-// Data needed for first part of the section
+////////// Data needed for first part of the section //////////
 
 const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
@@ -291,6 +292,50 @@ restaurant.orderDelivery({
   address: 'Via del Sole, 21',
   starterIndex: 1,
 });
+
+////////// Working with strings Part 1 //////////
+const airLine = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log('B737'[0]);
+
+console.log(airLine.length);
+console.log('B737'.length);
+
+console.log(airLine.indexOf('r'));
+console.log(airLine.lastIndexOf('r'));
+console.log(airLine.indexOf('Portugal'));
+
+console.log(airLine.slice(4)); // 4부터 추출
+console.log(airLine.slice(4, 7)); // 4, 5, 6만 추출! 즉, 7 전까지만
+
+console.log(airLine.slice(0, airLine.indexOf(' '))); // 첫단어만(처음부터 첫번째 공백 전까지만)
+console.log(airLine.slice(airLine.lastIndexOf(' ') + 1)); // 마지막단어만(마지막 공백부터 끝까지만)
+
+console.log(airLine.slice(-2)); // 맨뒤로부터 n개만
+console.log(airLine.slice(1, -1)); // 1부터 뒤에서 1까지만
+
+const checkMiddleSeat = function (seat) {
+  // B and E are middle seats
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') {
+    console.log('You got the middle seat 🙃');
+  } else {
+    console.log('You got lucky 😎');
+  }
+};
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
+
+// whenever we call a method on a string, JS converts the string into an object behind the scene. After the operation is done, the object is turned back into a string.
+console.log(new String('jonas'));
+console.log(typeof new String('jonas'));
+console.log(typeof new String('jonas').slice(1));
 
 ////////// Which data structure to use? //////////
 
