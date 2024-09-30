@@ -1,7 +1,7 @@
 'use strict';
 
 //////////////////// Coding Challenge #2 ////////////////////
-
+/*
 // DATA //
 const game = {
   team1: 'Bayern Munich',
@@ -58,13 +58,13 @@ for (const odd of odds) {
 let oddsAverage = oddsTotal / odds.length;
 console.log(oddsAverage);
 
-/*
-TASK 3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
-  Odd of victory Bayern Munich: 1.33
-  Odd of draw: 3.25
-  Odd of victory Borrussia Dortmund: 6.5
-Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
-*/
+
+// TASK 3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
+//   Odd of victory Bayern Munich: 1.33
+//   Odd of draw: 3.25
+//   Odd of victory Borrussia Dortmund: 6.5
+// Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
+
 const oddsEntries = Object.entries(game.odds);
 console.log(oddsEntries);
 for (const [team, odd] of oddsEntries) {
@@ -72,19 +72,20 @@ for (const [team, odd] of oddsEntries) {
   console.log(`Odd of ${teamStr}: ${odd}`);
 }
 
-/*
-BONUS: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
-      {
-        Gnarby: 1,
-        Hummels: 1,
-        Lewandowski: 2
-      }
-*/
+
+// BONUS: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
+//       {
+//         Gnarby: 1,
+//         Hummels: 1,
+//         Lewandowski: 2
+//       }
+
 const scorers = {};
 for (const player of game.scored) {
   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
 }
 console.log(scorers);
+*/
 
 //////////////////// Coding Challenge #1 ////////////////////
 /* 
@@ -246,6 +247,42 @@ restaurant.orderDelivery({
   address: 'Via del Sole, 21',
   starterIndex: 1,
 });
+
+////////// Sets //////////
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+console.log(ordersSet);
+
+console.log(new Set('Jonas'));
+
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+console.log(ordersSet.has('Bread'));
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+// ordersSet.clear();
+console.log(ordersSet);
+
+for (const order of ordersSet) {
+  console.log(order);
+}
+
+// Usecase: remove duplicates from arrays
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+console.log(
+  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
+
+console.log(new Set('jonasschmedtmann').size);
 
 ////////// looping objects: object keys, values, entries //////////
 /*
