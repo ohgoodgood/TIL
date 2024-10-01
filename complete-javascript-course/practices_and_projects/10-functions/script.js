@@ -1,7 +1,41 @@
 'use strict';
 
-////////////////// How Passing Arguments Works: Value vs. Reference //////////////////
+////////////////// hihger-order functions: functions accepting callback functions //////////////////
+const oneWord = function (str) {
+  return str.replaceAll(' ', '').toLowerCase();
+};
 
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(' ');
+  return [first.toUpperCase(), ...others].join(' ');
+};
+
+// higher-order function
+const transformer = function (str, fn) {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+
+  console.log(`Transformed by: ${fn.name}`);
+};
+
+transformer('JavaScript is the best!', upperFirstWord);
+transformer('JavaScript is the best!', oneWord);
+
+// another example
+const high5 = function () {
+  console.log('👋🏻');
+};
+document.body.addEventListener('click', high5);
+
+// another example
+['Jonas', 'Martha', 'Adam'].forEach(high5);
+
+// NOTE: callback function을 왜 사용하는가? 1) 각각의 기능을 분리해 두어서 유지보수 및 재사용에 용이. 2) 'abstraction'을 만들 수 있어서
+
+// NOTE: 'abstraction'이란? 하위 기능이 어떻게 작동하는지는 신경쓰지 않고, 주 기능에만 초점을 두는 것. 즉 callback 함수를 그대로 가져다 씀으로써, 그 callback 함수가 어떻게 동작하는지와 관계 없이 higher-order 함수는 자신의 기능을 위해 callback 함수의 기능을 사용할 수 있다. 불필요한 세부 사항을 숨기고 중요한 부분만을 드러낸다는 개념
+
+////////////////// How Passing Arguments Works: Value vs. Reference //////////////////
+/*
 const flight = 'LH234';
 const jonas = {
   name: 'Jonas Schmedtmann',
@@ -31,6 +65,7 @@ newPassport(jonas);
 checkIn(flight, jonas);
 
 ////// NOTE: 보통 다른 언어에서는 pass by value와 pass by reference가 둘 다 가능하다. 그런데 자바스크립트에서는 pass by value만 가능하다. 위에서 object를 pass한 것은 reference를 pass한 것처럼 보이지만, 사실은 memory address라는 value를 pass한 것이다.
+*/
 
 ////////////////// Default Parameters //////////////////
 /*
