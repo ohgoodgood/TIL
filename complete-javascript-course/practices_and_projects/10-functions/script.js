@@ -1,7 +1,62 @@
 'use strict';
 
-////////////////// hihger-order functions: functions returning functions //////////////////
+////////////////// the call and apply methods //////////////////
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  // book: function () {}
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
+};
 
+lufthansa.book(239, 'Jonas Schmedtmann');
+lufthansa.book(635, 'John Smith');
+console.log(lufthansa);
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+const book = lufthansa.book;
+
+// book(23, 'Sarah Williams');
+// this doesn't work! it's not the 'book' method in 'lufthansa' object anymore. it's just another seperate regular function. so, 'this' in this function points 'undefined'.
+
+// Call method
+book.call(eurowings, 23, 'Sarah Williams'); // calling 'call' method which calls 'book' function with 'this' keyword set to 'eurowings'.
+// we can manually and explicitly set a 'this' keyword of a function.
+console.log(eurowings);
+
+book.call(lufthansa, 239, 'Mary Cooper');
+console.log(lufthansa);
+
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
+};
+
+book.call(swiss, 583, 'Mary Cooper');
+console.log(swiss);
+
+// Apply method
+// call method와 똑같이 작동하지만, argument를 하나하나 받는게 아니라 array로 받음. 요즘은 잘 안 씀.
+const flightData = [583, 'George Cooper'];
+book.apply(swiss, flightData);
+console.log(swiss);
+
+// 지금은 이렇게 쓰는 게 더 일반적
+book.call(swiss, ...flightData);
+
+////////////////// hihger-order functions: functions returning functions //////////////////
+/*
 const greet = function (greeting) {
   return function (name) {
     console.log(`${greeting} ${name}`);
@@ -17,6 +72,7 @@ greet('Hello')('Jonas'); // greet('Hello') 자체가 하나의 function으로 �
 // An arrow function returning another
 const greetArr = greeting => name => console.log(`${greeting} ${name}`);
 greetArr('Hi')('Jonas');
+*/
 
 ////////////////// hihger-order functions: functions accepting callback functions //////////////////
 /*
