@@ -1,6 +1,25 @@
 'use strict';
 
+////////////////// hihger-order functions: functions returning functions //////////////////
+
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greeterHey = greet('Hey');
+greeterHey('Jonas');
+greeterHey('Steven');
+
+greet('Hello')('Jonas'); // greet('Hello') 자체가 하나의 function으로 반환됨. 그래서 그걸 호출하면서 argument로 ('Jonas') 전달한 것.
+
+// An arrow function returning another
+const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+greetArr('Hi')('Jonas');
+
 ////////////////// hihger-order functions: functions accepting callback functions //////////////////
+/*
 const oneWord = function (str) {
   return str.replaceAll(' ', '').toLowerCase();
 };
@@ -33,6 +52,7 @@ document.body.addEventListener('click', high5);
 // NOTE: callback function을 왜 사용하는가? 1) 각각의 기능을 분리해 두어서 유지보수 및 재사용에 용이. 2) 'abstraction'을 만들 수 있어서
 
 // NOTE: 'abstraction'이란? 하위 기능이 어떻게 작동하는지는 신경쓰지 않고, 주 기능에만 초점을 두는 것. 즉 callback 함수를 그대로 가져다 씀으로써, 그 callback 함수가 어떻게 동작하는지와 관계 없이 higher-order 함수는 자신의 기능을 위해 callback 함수의 기능을 사용할 수 있다. 불필요한 세부 사항을 숨기고 중요한 부분만을 드러낸다는 개념
+*/
 
 ////////////////// How Passing Arguments Works: Value vs. Reference //////////////////
 /*
