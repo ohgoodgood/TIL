@@ -1,7 +1,70 @@
 'use strict';
 
-////////////////// immediately invoked function expressions (IIFE) //////////////////
+////////////////// closures //////////////////
+/*
+const secureBooking = function () {
+  let passengerCount = 0;
 
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
+
+booker(); // 1 passengers
+booker(); // 2 passengers
+booker(); // 3 passengers
+
+console.dir(booker);
+*/
+
+// example 1 //
+let f;
+
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+g();
+f();
+console.dir(f);
+
+// f function re-assigned
+h();
+f();
+console.dir(f);
+
+// example 2 //
+const boardPassengers = function (n, wait) {
+  const perGroup = n / 3;
+
+  setTimeout(function () {
+    console.log(`We are now boarding all ${n} passengers`);
+    console.log(`There are 3 groups, each with ${perGroup} passengers`);
+  }, wait * 1000);
+
+  console.log(`Will start boarding in ${wait} seconds`);
+};
+// the callback function 'setTimeout' operates completely independantly to (and 3 seconds later than) the parent function 'boardPassengers'. BUT it can still access to variables and arguments of the parent function, which are 'n' and 'perGroup'.
+
+const perGroup = 1000; // BC closure is prior to scope chain, 180, not 1000, for 'perGroup' is used.
+
+boardPassengers(180, 3);
+
+////////////////// immediately invoked function expressions (IIFE) //////////////////
+/*
 const runOnce = function () {
   console.log('This will never run again');
 };
@@ -29,6 +92,7 @@ runOnce();
 }
 // console.log(isPrivate);
 console.log(notPrivate);
+*/
 
 ////////////////// the call, apply and bind methods //////////////////
 /*
