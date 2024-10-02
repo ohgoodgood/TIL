@@ -1,6 +1,7 @@
 'use strict';
 
-////////////////// the call and apply methods //////////////////
+////////////////// the call, apply and bind methods //////////////////
+
 const lufthansa = {
   airline: 'Lufthansa',
   iataCode: 'LH',
@@ -29,7 +30,7 @@ const book = lufthansa.book;
 // book(23, 'Sarah Williams');
 // this doesn't work! it's not the 'book' method in 'lufthansa' object anymore. it's just another seperate regular function. so, 'this' in this function points 'undefined'.
 
-// Call method
+// Call method //
 book.call(eurowings, 23, 'Sarah Williams'); // calling 'call' method which calls 'book' function with 'this' keyword set to 'eurowings'.
 // we can manually and explicitly set a 'this' keyword of a function.
 console.log(eurowings);
@@ -46,7 +47,7 @@ const swiss = {
 book.call(swiss, 583, 'Mary Cooper');
 console.log(swiss);
 
-// Apply method
+// Apply method //
 // call method와 똑같이 작동하지만, argument를 하나하나 받는게 아니라 array로 받음. 요즘은 잘 안 씀.
 const flightData = [583, 'George Cooper'];
 book.apply(swiss, flightData);
@@ -54,6 +55,53 @@ console.log(swiss);
 
 // 지금은 이렇게 쓰는 게 더 일반적
 book.call(swiss, ...flightData);
+
+// Bind method //
+// it doesn't call a function. it just returns a new function with 'this' keyword bound by coder.
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+bookEW(23, 'Steven Williams');
+
+const bookEW23 = book.bind(eurowings, 23); // 'this': eurowings, 'flighNum': 23,
+bookEW23('Jonas Schmedtmann'); // now it only needs 'name' argument
+bookEW23('Martha Cooper');
+
+// with eventlistners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+
+  this.planes++;
+  console.log(this.planes);
+};
+
+// document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane);
+// event handler is calling the function... here, 'this' points to what the event handler is attached to. (here, button)
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+// event handler is not calling the function. it's just returning a new function with a fixed 'this'.
+
+// partial application (working with preset parameters)
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23); // 'this': null, 'rate': 0.23
+// addVat = value => value + value * 0.23;
+
+console.log(addVAT(100));
+console.log(addVAT(23));
+
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+const addVAT2 = addTaxRate(0.23);
+console.log(addVAT2(100));
+console.log(addVAT2(23));
 
 ////////////////// hihger-order functions: functions returning functions //////////////////
 /*
