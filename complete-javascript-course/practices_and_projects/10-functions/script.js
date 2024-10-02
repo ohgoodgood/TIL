@@ -1,5 +1,35 @@
 'use strict';
 
+////////////////// immediately invoked function expressions (IIFE) //////////////////
+
+const runOnce = function () {
+  console.log('This will never run again');
+};
+runOnce();
+
+// IIFE
+// 첫번째 () 영역은 function expression. 두번째 ()는 그걸 호출.
+// 원래는 data privacy를 위해 별도의 function scope를 만들어 주기 위해 사용되었음.
+// 그러나 modern js에서는 걍 코드블록을 만들면 되어서, 그런 용도로 사용하지는 않음.
+// 다만 함수를 한번만 실행해야 하는 경우에는 여전히 사용함.
+
+(function () {
+  console.log('This will never run again');
+  const isPrivate = 23; // this data is private(encapsulated) inside this function scope.
+})();
+
+// console.log(isPrivate);
+
+(() => console.log('This will ALSO never run again'))();
+
+// modern javascript - code block
+{
+  const isPrivate = 23;
+  var notPrivate = 46;
+}
+// console.log(isPrivate);
+console.log(notPrivate);
+
 ////////////////// the call, apply and bind methods //////////////////
 /*
 const lufthansa = {
@@ -254,6 +284,7 @@ BONUS TEST DATA 1: [5, 2, 3]
 BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 */
 
+/*
 const poll = {
   question: 'What is your favourite programming language?',
 
@@ -308,3 +339,4 @@ document
 
 poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
 poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
+*/
