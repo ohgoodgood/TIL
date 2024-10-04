@@ -200,6 +200,46 @@ currenciesUnique.forEach(function (value, _, map) {
 });
 */
 
+//////////////////// the map method ////////////////////
+
+const euroToUsd = 1.1;
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// with map method - more close to the paradigm of functional programming
+/*
+const movementsUSD = movements.map(function (mov) {
+  return mov * euroToUsd;
+});
+console.log(movements);
+console.log(movementsUSD);
+*/
+
+// refactoring the callback fucntion to an arrow function (but depends on preference)
+const movementsUSD = movements.map(mov => mov * euroToUsd);
+console.log(movements);
+console.log(movementsUSD);
+
+// same task with for-of looping
+const movementsUSDfor = [];
+for (const mov of movements) movementsUSDfor.push(mov * euroToUsd);
+console.log(movementsUSDfor);
+
+const movementsDescriptions = movements.map(
+  (mov, i) =>
+    // if (mov > 0) {
+    //   return `Movement ${i + 1}: You deposited ${mov}`;
+    // } else {
+    //   return `Movement ${i + 1}: You withdrew ${Math.abs(mov)}`;
+    // }
+
+    // refactoring
+    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+      mov
+    )}`
+);
+console.log(movementsDescriptions);
+// NOTE: with for-each method, 'side effects' occur for every iteration. BUT there's no side effect from map method.
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 // coding challenge #1
@@ -220,7 +260,7 @@ TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
 */
-
+/*
 let dogsJulia = [3, 5, 2, 12, 7];
 let dogsKate = [4, 1, 15, 8, 3];
 
@@ -245,3 +285,4 @@ dogsJulia = [9, 16, 6, 8, 3];
 dogsKate = [10, 5, 6, 1, 4];
 
 checkDogs(dogsJulia, dogsKate);
+*/
