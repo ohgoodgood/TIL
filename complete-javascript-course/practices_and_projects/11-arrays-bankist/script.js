@@ -83,8 +83,14 @@ const displayMovement = function (movements) {
 };
 displayMovement(account1.movements);
 
-// compute username with the map method and for-each method
+// compute balance with the reduce method
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => (acc += mov), 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
 
+// compute username with the map method and for-each method
 const createUsernames = function (accs) {
   // in this case, side effect is to change(mutate) the original array.
   // bc we want the side effect this time, we'll use the foreach method.
@@ -104,7 +110,6 @@ const createUsernames = function (accs) {
   // return username;
 };
 createUsernames(accounts);
-console.log(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -265,7 +270,7 @@ console.log(movementsDescriptions);
 */
 
 ////////////////////// the filter method ////////////////////////
-
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // using filter method. more 'functional' approach and compatible with chaining.
@@ -285,6 +290,35 @@ for (const mov of movements)
     depositsFor.push(mov);
   }
 console.log(depositsFor);
+*/
+
+///////////////////////// the reduce method ///////////////////////////
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// accumulator: like a snowball
+// const balance = movements.reduce(function (acc, cur, i, arr) {
+//   console.log(`Iteration ${i}: ${acc}`);
+//   return acc + cur;
+// }, 0); // initial value of the accumulator
+// console.log(balance);
+
+const balance = movements.reduce((acc, cur, i, arr) => acc + cur, 0); // initial value of the accumulator
+console.log(balance);
+
+// using for loop
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+console.log(balance2);
+
+// maximum value
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) {
+    return acc;
+  } else {
+    return mov;
+  }
+}, movements[0]); // here, initial value of accumulator = first value of the array
+console.log(max);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
