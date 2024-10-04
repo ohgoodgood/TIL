@@ -71,7 +71,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -112,7 +112,7 @@ console.log(letters.join(' - '));
 */
 
 //////////////////// the new at method ////////////////////
-
+/*
 const arr = [23, 11, 64];
 console.log(arr[0]);
 console.log(arr.at(0));
@@ -125,3 +125,33 @@ console.log(arr.at(-1));
 // also works on strings
 console.log('jonas'.at(0));
 console.log('jonas'.at(-1));
+*/
+
+//////////////////// looping arrays: foreach ////////////////////
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// for of 에서 element에 더하여 index에 접근했던 방법
+for (const [i, movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
+  }
+}
+
+console.log(`-------- FOREACH --------`);
+
+// foreach는 current element뿐만 아니라 index, array도 arugument로 전달한다. (순서 주의!)
+// 또 하나의 차이: foreach에는 break, continue가 먹히지 않음. 걍 끝까지 다 반복함.
+movements.forEach(function (mov, i, arr) {
+  if (mov > 0) {
+    console.log(`Movement ${i}: You deposited ${mov}`);
+  } else {
+    console.log(`Movement ${i}: You withdrew ${Math.abs(mov)}`);
+  }
+});
+// 0: function(200)
+// 1: function(450)
+// 2: function(400)
+// ...
