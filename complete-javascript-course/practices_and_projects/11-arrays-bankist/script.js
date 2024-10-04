@@ -362,6 +362,18 @@ const totalDeopsitsUSD = movements
 console.log(totalDeopsitsUSD);
 */
 
+////////////////////////////////// the find method //////////////////////////////////////
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal); // find method only returns the first element which meets the condition, not in an array but just the value.
+// NOTE: filter method returns all elements that meets the condition, in a form of new array.
+
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -462,6 +474,7 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 GOOD LUCK 😀
 */
 
+/*
 const calcAverageHumanAge = ages =>
   ages
     .map(age => (age <= 2 ? age * 2 : 16 + age * 4))
@@ -471,3 +484,4 @@ const calcAverageHumanAge = ages =>
 const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 console.log(avg1, avg2);
+*/
