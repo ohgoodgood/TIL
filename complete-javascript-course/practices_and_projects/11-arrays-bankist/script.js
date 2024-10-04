@@ -61,6 +61,28 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayMovement = function (movements) {
+  containerMovements.innerHTML = '';
+  // .textContent = 0 와 같은 역할
+
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    const html = `
+      <div class="movements__row">
+        <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type}</div>
+        <div class="movements__value">${mov}</div>
+      </div>
+      `;
+
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+    // 'beforeend'로 하면 밑으로 쌓여서, 맨 위가 1번 맨 아래가 마지막이 됨. 'afterbegin'으로 하면 최근에 추가된 게 맨 위에 옴
+  });
+};
+displayMovement(account1.movements);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -158,7 +180,7 @@ movements.forEach(function (mov, i, arr) {
 */
 
 ///////////////// foreach with maps and sets ////////////////////
-
+/*
 // with a map
 const currencies = new Map([
   ['USD', 'United States dollar'],
@@ -176,3 +198,4 @@ console.log(currenciesUnique);
 currenciesUnique.forEach(function (value, _, map) {
   console.log(`${_}: ${value}`); // set has no keys nor indexes. so arguments: value, value, map
 });
+*/
