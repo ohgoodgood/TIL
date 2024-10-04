@@ -73,7 +73,7 @@ const displayMovement = function (movements) {
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-        <div class="movements__value">${mov}</div>
+        <div class="movements__value">${mov}€</div>
       </div>
       `;
 
@@ -86,9 +86,32 @@ displayMovement(account1.movements);
 // compute balance with the reduce method
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => (acc += mov), 0);
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance}€`;
 };
 calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => {
+      console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+calcDisplaySummary(account1.movements);
 
 // compute username with the map method and for-each method
 const createUsernames = function (accs) {
@@ -111,8 +134,7 @@ const createUsernames = function (accs) {
 };
 createUsernames(accounts);
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // LECTURES
 
 // const currencies = new Map([
@@ -322,7 +344,25 @@ const max = movements.reduce((acc, mov) => {
 console.log(max);
 */
 
-//////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////// chaining methods //////////////////////////////////////
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const euroToUsd = 1.1;
+
+// chaining... works like a pipeline
+const totalDeopsitsUSD = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * euroToUsd)
+  // 단계별로 결과물을 확인하고자 할 때 (디버깅 등의 경우), arr로 접근 가능
+  // .map((mov, i, arr) => {
+  //   console.log(arr);
+  //   return mov * euroToUsd;
+  // })
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDeopsitsUSD);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////// coding challenge #1 /////////////////////////////////
 /* 
@@ -385,7 +425,7 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
 */
-
+/*
 const dogAges = [5, 2, 4, 1, 15, 8, 3];
 const dogAges2 = [16, 6, 10, 5, 6, 1, 4];
 
@@ -409,3 +449,4 @@ const calcAverageHumanAge = function (ages) {
 };
 calcAverageHumanAge(dogAges);
 calcAverageHumanAge(dogAges2);
+*/
