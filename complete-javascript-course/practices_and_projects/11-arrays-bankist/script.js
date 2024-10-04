@@ -83,6 +83,29 @@ const displayMovement = function (movements) {
 };
 displayMovement(account1.movements);
 
+// compute username with the map method and for-each method
+
+const createUsernames = function (accs) {
+  // in this case, side effect is to change(mutate) the original array.
+  // bc we want the side effect this time, we'll use the foreach method.
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase() // returns string
+      .split(' ') // returns array
+      .map(name => name[0]) // map method on array // don't need to write 'return' after the arrow! it IS returning
+      .join(''); // join method on array
+  });
+
+  // const username = user
+  //   .toLowerCase() // returns string
+  //   .split(' ') // returns array
+  //   .map(name => name[0]) // map method on array // don't need to write 'return' after the arrow! it IS returning
+  //   .join(''); // join method on array
+  // return username;
+};
+createUsernames(accounts);
+console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -201,18 +224,18 @@ currenciesUnique.forEach(function (value, _, map) {
 */
 
 //////////////////// the map method ////////////////////
-
+/*
 const euroToUsd = 1.1;
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // with map method - more close to the paradigm of functional programming
-/*
-const movementsUSD = movements.map(function (mov) {
-  return mov * euroToUsd;
-});
-console.log(movements);
-console.log(movementsUSD);
-*/
+
+// const movementsUSD = movements.map(function (mov) {
+//   return mov * euroToUsd;
+// });
+// console.log(movements);
+// console.log(movementsUSD);
+
 
 // refactoring the callback fucntion to an arrow function (but depends on preference)
 const movementsUSD = movements.map(mov => mov * euroToUsd);
@@ -239,6 +262,7 @@ const movementsDescriptions = movements.map(
 );
 console.log(movementsDescriptions);
 // NOTE: with for-each method, 'side effects' occur for every iteration. BUT there's no side effect from map method.
+*/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
