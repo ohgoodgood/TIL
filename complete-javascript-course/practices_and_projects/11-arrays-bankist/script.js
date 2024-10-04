@@ -81,29 +81,27 @@ const displayMovement = function (movements) {
     // 'beforeend'로 하면 밑으로 쌓여서, 맨 위가 1번 맨 아래가 마지막이 됨. 'afterbegin'으로 하면 최근에 추가된 게 맨 위에 옴
   });
 };
-displayMovement(account1.movements);
 
 // compute balance with the reduce method
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => (acc += mov), 0);
   labelBalance.textContent = `${balance}€`;
 };
-calcDisplayBalance(account1.movements);
 
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumIn.textContent = `${incomes}€`;
 
-  const out = movements
+  const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = `${Math.abs(out)}€`;
 
-  const interest = movements
+  const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(deposit => (deposit * 1.2) / 100)
+    .map(deposit => (deposit * acc.interestRate) / 100)
     .filter((int, i, arr) => {
       // console.log(arr);
       return int >= 1;
@@ -111,7 +109,6 @@ const calcDisplaySummary = function (movements) {
     .reduce((acc, int) => acc + int, 0);
   labelSumInterest.textContent = `${interest}€`;
 };
-calcDisplaySummary(account1.movements);
 
 // compute username with the map method and for-each method
 const createUsernames = function (accs) {
@@ -133,6 +130,41 @@ const createUsernames = function (accs) {
   // return username;
 };
 createUsernames(accounts);
+
+// Event Handlers
+let currentAccount;
+
+btnLogin.addEventListener('click', function (e) {
+  // prevent form from submitting
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  ); // find method in action !!
+  console.log(currentAccount);
+
+  // optional chaining in action !
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // display UI and a welcome message
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+    containerApp.style.opacity = 100;
+
+    // clear input fields
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
+
+    // display movements
+    displayMovement(currentAccount.movements);
+
+    // display balance
+    calcDisplayBalance(currentAccount.movements);
+
+    // display summary
+    calcDisplaySummary(currentAccount);
+  }
+});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // LECTURES
@@ -363,6 +395,7 @@ console.log(totalDeopsitsUSD);
 */
 
 ////////////////////////////////// the find method //////////////////////////////////////
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const firstWithdrawal = movements.find(mov => mov < 0);
 console.log(movements);
@@ -373,6 +406,7 @@ console.log(accounts);
 
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
+*/
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
