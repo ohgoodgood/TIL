@@ -542,7 +542,7 @@ console.log(overallBalance2);
 */
 
 ////////////////////////////////// sorting arrays //////////////////////////////////////
-
+/*
 // with strings
 const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
 console.log(owners.sort()); // A-Z
@@ -568,6 +568,40 @@ console.log(movements); // sorted in ascending order
 // });
 movements.sort((a, b) => b - a); // refactoring
 console.log(movements); // sorted in descending order
+*/
+
+///////////////////////////// more ways of creating and filling arrays  /////////////////////////////////
+
+// fill method
+const x = new Array(7);
+console.log(x); // an array with 7 empty elements
+
+// x.fill(1);
+// console.log(x); // fill the entire with 1 (original array mutated)
+
+x.fill(1, 3, 5);
+console.log(x); // fill with 1, starting from 3rd and ending before 5th
+
+const arr = [1, 2, 3, 4, 5, 6, 7];
+arr.fill(23, 2, 6);
+console.log(arr); // doesn't have to be an empty array
+
+// array.from (a method on the function 'Array', not on an array)
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('€', ''))
+  );
+  console.log(movementsUI);
+});
+
+const movementsUI2 = [...document.querySelectorAll('.movements__value')];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
