@@ -61,11 +61,13 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovement = function (movements) {
+const displayMovement = function (movements, sort = false) {
   containerMovements.innerHTML = '';
   // .textContent = 0 와 같은 역할
 
-  movements.forEach(function (mov, i) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements; // for sorting
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
@@ -230,6 +232,15 @@ btnClose.addEventListener('click', function (e) {
     containerApp.style.opacity = 0;
   }
   inputCloseUsername.value = inputClosePin.value = '';
+});
+
+// Sorting feature
+let sorted = false;
+
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovement(currentAccount.movements, !sorted);
+  sorted = !sorted;
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -499,6 +510,7 @@ console.log(movements.filter(deposit));
 */
 
 ////////////////////////////////// flat and flatMap method //////////////////////////////////////
+/*
 const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
 console.log(arr.flat()); // [1, 2, 3, 4, 5, 6, 7, 8]
 
@@ -527,6 +539,35 @@ const overallBalance2 = accounts
   .flatMap(acc => acc.movements) // (note) only goes for 1 level deep
   .reduce((acc, mov) => acc + mov, 0);
 console.log(overallBalance2);
+*/
+
+////////////////////////////////// sorting arrays //////////////////////////////////////
+
+// with strings
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log(owners.sort()); // A-Z
+console.log(owners); // original array mutated
+
+// with numbers
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements);
+// console.log(movements.sort()); // weird result... b/c sorting based on string
+
+// sorting in ascending order
+// movements.sort((a, b) => {
+//   if (a > b) return 1; // return > 0 => b, a (switch order)
+//   if (a < b) return -1; // return < 0 => a, b
+// });
+movements.sort((a, b) => a - b); // refactoring
+console.log(movements); // sorted in ascending order
+
+// sorting in descending order
+// movements.sort((a, b) => {
+//   if (a > b) return -1; // return > 0 => a, b
+//   if (a < b) return 1; // return < 0 => b, a (switch order)
+// });
+movements.sort((a, b) => b - a); // refactoring
+console.log(movements); // sorted in descending order
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
