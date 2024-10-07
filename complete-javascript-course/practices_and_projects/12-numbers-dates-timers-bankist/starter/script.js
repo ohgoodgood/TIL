@@ -356,7 +356,7 @@ labelBalance.addEventListener('click', function () {
 */
 
 ///////////////////////////////// the numeric separators //////////////////////////////////////
-
+/*
 // underscore: 사람이 읽는 의미를 전달. 1000단위로 끊기, 달러와 센트 끊기 등. 그러나 자바스크립트는 걍 언더스코어 빼고 숫자 그대로 읽음.
 
 // 287,460,000,000
@@ -378,3 +378,40 @@ const transferFee2 = 1_500;
 // doesn't work with numbers in string
 console.log(Number('230_000')); // NaN
 console.log(parseInt('230_000')); // 230
+*/
+
+///////////////////////////////// working with bigint //////////////////////////////////////
+
+console.log(2 ** 53 - 1); // the biggest number that JS can safely represent
+console.log(Number.MAX_SAFE_INTEGER); // the biggest number that JS can safely represent
+console.log(2 ** 53 + 1);
+console.log(2 ** 53 + 2);
+console.log(2 ** 53 + 3);
+console.log(2 ** 53 + 4); // sometimes works, sometimes not...
+
+console.log(4839843580239349856203409734892364n);
+console.log(BigInt(483984));
+
+// operations
+console.log(10000n + 10000n); // 20000n
+console.log(1231350981364508973560918345n * 100000000n);
+// console.log(Math.sqrt(16n)); // doesnt' work
+
+const huge = 201924019843650193823098n;
+const num = 23;
+// console.log(huge * num); // error: can't mix bigint and normal number
+console.log(huge * BigInt(num)); // now it works
+
+// exceptions
+console.log(20n > 15); // works. true
+console.log(20n === 20); // works. false
+console.log(typeof 20n);
+console.log(20n == 20); // works. true
+
+console.log(huge + ' is REALLY big!!!'); // bigint number is converted to a string
+
+// divisions
+console.log(10n / 3n);
+console.log(11n / 3n);
+console.log(12n / 3n);
+console.log(10 / 3);
