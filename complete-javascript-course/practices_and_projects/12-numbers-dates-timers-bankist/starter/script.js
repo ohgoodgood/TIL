@@ -335,7 +335,7 @@ console.log(+(2.345).toFixed(2)); // 2.35 (number)
 */
 
 ///////////////////////////////// the remainder operator //////////////////////////////////////
-
+/*
 console.log(5 % 2); // 5 = 2 * 2 + 1
 console.log(8 % 3); // 8 = 3 * 2 + 2
 
@@ -353,3 +353,28 @@ labelBalance.addEventListener('click', function () {
     if (i % 3 === 0) row.style.backgroundColor = 'blue';
   });
 });
+*/
+
+///////////////////////////////// the numeric separators //////////////////////////////////////
+
+// underscore: 사람이 읽는 의미를 전달. 1000단위로 끊기, 달러와 센트 끊기 등. 그러나 자바스크립트는 걍 언더스코어 빼고 숫자 그대로 읽음.
+
+// 287,460,000,000
+const diameter = 287_460_000_000;
+console.log(diameter);
+
+// 345 dollors 99 cents
+const priceCents = 345_99;
+console.log(priceCents);
+
+// different meaning only for human. JS reads no difference
+const transferFee1 = 15_00;
+const transferFee2 = 1_500;
+
+// only btw numbers
+// const PI = 3._1415;
+// console.log(PI);
+
+// doesn't work with numbers in string
+console.log(Number('230_000')); // NaN
+console.log(parseInt('230_000')); // 230
