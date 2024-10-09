@@ -76,3 +76,66 @@ document
     message.remove();
     // message.parentElement.removeChild(message); // used to be this way
   });
+
+/////////////////////////// Styles, Attributs and Classes ////////////////////////////
+
+//// styles ////
+message.style.backgroundColor = `#37383d`;
+message.style.width = `120%`;
+
+console.log(message.style.height); // nothing printed: height is not written as a in-line css.
+console.log(message.style.backgroundColor); // background color printed
+
+// getComputedStyle: css에 작성했는지와 관계없이, 화면에 출력되고 있는 스타일의 계산값을 알려줌
+console.log(getComputedStyle(message)); // prints all of the properties
+console.log(getComputedStyle(message).color); // prints color only
+console.log(getComputedStyle(message).height);
+
+// 현재 화면에 출력되는 요소 높이에 일정 높이를 더해보자
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+
+// working with CSS variables
+document.documentElement.style.setProperty(`--color-primary`, 'orangered');
+
+//// attributes ////
+// reading attributes
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+console.log(logo.src);
+console.log(logo.className);
+
+// setting attributes
+logo.alt = 'Beautiful minimalist logo';
+console.log(logo.alt);
+
+// working with non-standard attributes
+console.log(logo.designer); // undefined
+console.log(logo.getAttribute('designer')); // Jonas
+
+logo.setAttribute('company', 'Bankist');
+console.log(logo.getAttribute('company')); // Bankist
+
+// getting absolute and relative url
+console.log(logo.src);
+console.log(logo.getAttribute('src'));
+
+const link = document.querySelector('.twitter-link');
+console.log(link.href);
+console.log(link.getAttribute('href')); // in this case they're both the same but anyway...
+
+const link2 = document.querySelector('.nav__link--btn');
+console.log(link2.href);
+console.log(link2.getAttribute('href'));
+
+//// data attributes ////
+console.log(logo.dataset.versionNumber);
+
+//// classes ////
+logo.classList.add('c', 'j');
+logo.classList.remove('c', 'j');
+logo.classList.toggle('c');
+logo.classList.contains('c'); // not 'includes'
+
+// we can set a classname like this, but DON'T DO THIS
+// logo.className = 'jonas';
