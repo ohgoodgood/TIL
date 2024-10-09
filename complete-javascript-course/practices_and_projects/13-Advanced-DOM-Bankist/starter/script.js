@@ -178,3 +178,24 @@ logo.classList.contains('c'); // not 'includes'
 // we can set a classname like this, but DON'T DO THIS
 // logo.className = 'jonas';
 */
+
+//////////////////////// Types of events and event handlers /////////////////////////
+
+const h1 = document.querySelector('h1');
+
+// old-school
+// h1.onmouseenter = function (e) {
+//   alert('addEventListener: Great! You are reading the heading :D');
+// };
+
+// modern (and better): we can attach multiple functions to an event listener, and we can even remove an event listener
+const alertH1 = function (e) {
+  alert('addEventListener: Great! You are reading the heading :D');
+
+  h1.removeEventListener('mouseenter', alertH1);
+};
+
+h1.addEventListener('mouseenter', alertH1);
+
+// 이런 것도 가능
+// setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
