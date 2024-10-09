@@ -1,7 +1,6 @@
 'use strict';
 
-///////////////////////////////////////////////////////////////////////////////////////
-// Modal window
+//// Modal window ////
 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
@@ -32,11 +31,50 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+//// Implementing smooth scroll ////
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  // geting coordinates
+
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+
+  // 참고
+
+  // console.log(e.target.getBoundingClientRect());
+  // console.log('Current scroll (X/Y)', window.scrollX, scrollY);
+  // console.log(
+  //   'height/width vidwport',
+  //   document.documentElement.clientHeight,
+  //   document.documentElement.clientWidth
+  // );
+
+  // scrolling (old-school ways)
+
+  // window.scrollTo(
+  //   s1coords.left + window.scrollX, // 뷰포트에서 보이는 위치 + 이미 스크롤된만큼의 좌표값 -> 스크롤 위치와 관계없는 절대적인 위치 지정
+  //   s1coords.top + window.scrollY // 뷰포트에서 보이는 위치 + 이미 스크롤된만큼의 좌표값 -> 스크롤 위치와 관계없는 절대적인 위치 지정
+  // );
+
+  window.scrollTo({
+    left: s1coords.left + window.scrollX, // 뷰포트에서 보이는 위치 + 이미 스크롤된만큼의 좌표값 -> 스크롤 위치와 관계없는 절대적인 위치 지정
+    top: s1coords.top + window.scrollY, // 뷰포트에서 보이는 위치 + 이미 스크롤된만큼의 좌표값 -> 스크롤 위치와 관계없는 절대적인 위치 지정
+    behavior: 'smooth',
+  });
+
+  // scrolling (modern way. only works in modern browsers)
+
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+
 //////////////////////////////////// Lecture //////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////// Selecting, Creating, and Deleting Elements //////////////////////
-
+/*
 //// selecting elements ////
 console.log(document.documentElement);
 console.log(document.head);
@@ -139,3 +177,4 @@ logo.classList.contains('c'); // not 'includes'
 
 // we can set a classname like this, but DON'T DO THIS
 // logo.className = 'jonas';
+*/
