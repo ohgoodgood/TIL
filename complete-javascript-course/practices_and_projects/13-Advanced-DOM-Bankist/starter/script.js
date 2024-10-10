@@ -70,6 +70,37 @@ btnScrollTo.addEventListener('click', function (e) {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
 
+//// event propagation: capturing and bubbling ////
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
+console.log(randomColor(0, 255));
+
+// e.target: where an event happened, e.currentTarget: where an event handler is attached
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('LINK', e.target, e.currentTarget);
+  console.log(e.currentTarget === this);
+
+  // Stop propagation
+  // e.stopPropagation();
+});
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('CONTAINER', e.target, e.currentTarget);
+});
+
+document.querySelector('.nav').addEventListener(
+  'click',
+  function (e) {
+    this.style.backgroundColor = randomColor();
+    console.log('NAV', e.target, e.currentTarget);
+  }
+  // true: 3rd parameter for setting the handler to read event in the capturing phase, not in the bubbling phase
+);
+
 //////////////////////////////////// Lecture //////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -180,7 +211,7 @@ logo.classList.contains('c'); // not 'includes'
 */
 
 //////////////////////// Types of events and event handlers /////////////////////////
-
+/*
 const h1 = document.querySelector('h1');
 
 // old-school
@@ -199,3 +230,4 @@ h1.addEventListener('mouseenter', alertH1);
 
 // 이런 것도 가능
 // setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
+*/
