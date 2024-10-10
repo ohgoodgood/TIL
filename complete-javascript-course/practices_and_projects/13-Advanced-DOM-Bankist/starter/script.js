@@ -1,11 +1,15 @@
 'use strict';
 
-//// Modal window ////
+//// Elements ////
 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+//// Modal window ////
 
 const openModal = function (e) {
   e.preventDefault();
@@ -32,9 +36,6 @@ document.addEventListener('keydown', function (e) {
 });
 
 //// Implementing smooth scroll ////
-
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
 
 btnScrollTo.addEventListener('click', function (e) {
   // geting coordinates
@@ -70,7 +71,38 @@ btnScrollTo.addEventListener('click', function (e) {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
 
-//// event propagation: capturing and bubbling ////
+//// Page navigation with smooth scrolling ////
+
+// W/O event delegation: it works, but not efficient especially when there are lots of elements to be attached with event handlers
+
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href'); // getting relative url, not absolute one
+//     console.log(id);
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
+// WITH event delegation
+
+// 1. Add event listener to the common parent element
+// 2. Identify the element from which the event originated
+// 3. Match the functionality we want to the element from NO.2
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  // Matching strategy
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href'); // getting relative url, not absolute one
+    console.log(id);
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
+
+//// Event propagation: capturing and bubbling ////
+/*
 const randomInt = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
 const randomColor = () =>
@@ -100,6 +132,7 @@ document.querySelector('.nav').addEventListener(
   }
   // true: 3rd parameter for setting the handler to read event in the capturing phase, not in the bubbling phase
 );
+*/
 
 //////////////////////////////////// Lecture //////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
