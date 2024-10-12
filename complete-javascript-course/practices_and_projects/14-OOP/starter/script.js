@@ -221,6 +221,48 @@ sarah.init('Sarah', 1979); // this is completely different from (constructor fun
 sarah.calcAge();
 */
 
+/////////////// Inheritance between "classes": (1)constructor functions /////////////
+
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, course) {
+  // this.firstName = firstName;
+  // this.birthYear = birthYear;
+  Person.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+// linking prototypes
+Student.prototype = Object.create(Person.prototype); // create an empty object 'Student.prototype', which inherits 'Person.prototype'
+// shd be done before adding any properties / methods into 'Student.prototype' object!
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const mike = new Student('Mike', 2020, 'Computer science');
+console.log(mike);
+mike.introduce();
+mike.calcAge(); // this works bc of prototype inheritance (this method is in Person.prototype)
+
+console.log(mike.__proto__);
+console.log(mike.__proto__.__proto__);
+
+console.log(mike instanceof Student);
+console.log(mike instanceof Person);
+console.log(mike instanceof Object);
+
+console.dir(Student.prototype.constructor); // Person 이라고 잘못 뜸 (Object.create를 사용했기 때문)
+Student.prototype.constructor = Student; // 바로잡아주기
+console.dir(Student.prototype.constructor); // Student 라고 제대로 뜸
+
 /////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////// Coding Challenge #1 ////////////////////////////////
