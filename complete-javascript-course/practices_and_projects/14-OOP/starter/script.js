@@ -1,7 +1,7 @@
 'use strict';
 
 //////////////////// Constructor functions and the new operator ////////////////////
-
+/*
 const Person = function (firstName, birthYear) {
   // instance properties
   this.firstName = firstName; // parameter -> property
@@ -81,9 +81,48 @@ console.log(arr.unique());
 const h1 = document.querySelector('h1');
 console.dir(h1);
 console.dir(x => x + 1);
+*/
+
+///////////////////////////////// ES6 classes ///////////////////////////////////////
+
+// class expression
+// const PersonCl = class {};
+
+// class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // methods written here(inside the class and outside of the constructor) will be added to the will-be-created objects' prototype!
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`Hey ${this.firstName}`);
+  }
+}
+
+// class 안에 method 작성하는 것과 아래처럼 prototype에 직접 추가하는 것은 동일함!
+// PersonCl.prototype.greet = function () {
+//   console.log(`Hey ${this.firstName}`);
+// };
+
+const jessica = new PersonCl('Jessica', 1996);
+console.log(jessica);
+jessica.calcAge();
+jessica.greet();
+
+console.log(jessica.__proto__ === PersonCl.prototype); // true
+
+// NOTES
+// 1. classes are not hoisted.
+// 2. classes are first-class citizens.
+// 3. classes are executed always in strict mode.
 
 //////////////////////////////// Coding Challenge #1 ////////////////////////////////
-
 /* 
 1. Use a constructor function to implement a Car. A car has a make and a speed property. The speed property is the current speed of the car in km/h;
 2. Implement an 'accelerate' method that will increase the car's speed by 10, and log the new speed to the console;
@@ -95,7 +134,7 @@ DATA CAR 2: 'Mercedes' going at 95 km/h
 
 GOOD LUCK 😀
 */
-
+/*
 const Car = function (make, speed) {
   this.make = make;
   this.speed = speed;
@@ -119,3 +158,4 @@ car1.accelerate();
 car2.accelerate();
 car1.brake();
 car2.brake();
+*/
