@@ -90,8 +90,8 @@ console.dir(x => x + 1);
 
 // class declaration
 class PersonCl {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
     this.birthYear = birthYear;
   }
 
@@ -103,6 +103,21 @@ class PersonCl {
   greet() {
     console.log(`Hey ${this.firstName}`);
   }
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  // setting a property that already exists... for data validation, for example!
+  set fullName(name) {
+    console.log(name);
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
 }
 
 // class 안에 method 작성하는 것과 아래처럼 prototype에 직접 추가하는 것은 동일함!
@@ -110,7 +125,7 @@ class PersonCl {
 //   console.log(`Hey ${this.firstName}`);
 // };
 
-const jessica = new PersonCl('Jessica', 1996);
+const jessica = new PersonCl('Jessica Davis', 1996);
 console.log(jessica);
 jessica.calcAge();
 jessica.greet();
@@ -121,6 +136,30 @@ console.log(jessica.__proto__ === PersonCl.prototype); // true
 // 1. classes are not hoisted.
 // 2. classes are first-class citizens.
 // 3. classes are executed always in strict mode.
+
+//////////////////////////////// Setters and Getters ////////////////////////////////
+const account = {
+  owner: 'jonas',
+  movements: [200, 530, 120, 300],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  set latest(mov) {
+    this.movements.push(mov);
+  },
+};
+
+// with getter and setter, we can use a functionality not in a form of calling a method but in a form of reading a property
+
+console.log(account.latest);
+
+account.latest = 50;
+console.log(account.movements);
+
+// also works in a class
+console.log(jessica.age);
 
 //////////////////////////////// Coding Challenge #1 ////////////////////////////////
 /* 
