@@ -434,7 +434,7 @@ DATA CAR 1: 'Tesla' going at 120 km/h, with a charge of 23%
 
 GOOD LUCK 😀
 */
-
+/*
 const Car = function (make, speed) {
   this.make = make;
   this.speed = speed;
@@ -477,3 +477,4 @@ const Tesla = new EV('Tesla', 120, 23);
 Tesla.chargeBattery(90);
 Tesla.brake();
 Tesla.accelerate();
+*/
