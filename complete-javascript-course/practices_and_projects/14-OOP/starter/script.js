@@ -15,6 +15,7 @@ const Person = function (firstName, birthYear) {
 
 const jonas = new Person('Jonas', 1991);
 console.log(jonas);
+
 // when calling a function with 'new' operator,
 // 1. a new empty {} is created
 // 2. the function is called, 'this' = {}
@@ -53,8 +54,8 @@ console.log(Person.prototype.isPrototypeOf(matilda));
 Person.prototype.species = 'Homo Sapiens';
 console.log(jonas.species, matilda.species);
 
-console.log(jonas.hasOwnProperty('firstName'));
-console.log(jonas.hasOwnProperty('species'));
+console.log(jonas.hasOwnProperty('firstName')); // true
+console.log(jonas.hasOwnProperty('species')); // false
 
 //////////////////// Prototypal inheritance on built-in objects /////////////////////
 
@@ -134,8 +135,8 @@ console.log(jessica.__proto__ === PersonCl.prototype); // true
 
 // NOTES
 // 1. classes are not hoisted.
-// 2. classes are first-class citizens.
-// 3. classes are executed always in strict mode.
+// 2. classes are first-class citizens. (can be passed into / returned from functions)
+// 3. the body of classes are always executed in strict mode.
 
 //////////////////////////////// Setters and Getters ////////////////////////////////
 const account = {
@@ -163,7 +164,8 @@ console.log(jessica.age);
 */
 
 /////////////////////////////// Static methods ////////////////////////////////////
-// methods attached dirctly to a constructor or a class, but not to a prototype
+// methods attached dirctly to a constructor or a class, but not to a prototype property
+
 /*
 // with a constructor
 const Person = function (firstName, birthYear) {
@@ -255,9 +257,9 @@ mike.calcAge(); // this works bc of prototype inheritance (this method is in Per
 console.log(mike.__proto__);
 console.log(mike.__proto__.__proto__);
 
-console.log(mike instanceof Student);
-console.log(mike instanceof Person);
-console.log(mike instanceof Object);
+console.log(mike instanceof Student); // true
+console.log(mike instanceof Person); // true
+console.log(mike instanceof Object); // true
 
 console.dir(Student.prototype.constructor); // Person 이라고 잘못 뜸 (Object.create를 사용했기 때문)
 Student.prototype.constructor = Student; // 바로잡아주기
@@ -265,7 +267,7 @@ console.dir(Student.prototype.constructor); // Student 라고 제대로 뜸
 */
 
 //////////////////// Inheritance between "classes": (2)ES6 classes ///////////////////
-
+/*
 class PersonCl {
   constructor(fullName, birthYear) {
     this.fullName = fullName;
@@ -330,6 +332,9 @@ martha.calcAge();
 
 class StudentClSimple extends PersonCl {} // if no new property needed, no constructor needed!
 const jacob = new StudentClSimple('Jacob Tiller', 2001);
+*/
+
+///////////////// Inheritance between "classes": (3) Object.create //////////////////
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -382,6 +387,7 @@ DATA CAR 1: 'Ford' going at 120 km/h
 
 GOOD LUCK 😀
 */
+
 /*
 class CarCl {
   constructor(make, speed) {
@@ -389,14 +395,14 @@ class CarCl {
     this.speed = speed;
   }
 
-  acclerate() {
+  accelerate() {
     this.speed += 10;
-    console.log(`${this.make} is going at ${this.speed} km/h`);
+    console.log(`${this.make} is going at ${this.speed}km/h`);
   }
 
   brake() {
     this.speed -= 5;
-    console.log(`${this.make} is going at ${this.speed} km/h`);
+    console.log(`${this.make} is going at ${this.speed}km/h`);
   }
 
   get speedUS() {
@@ -410,8 +416,8 @@ class CarCl {
 
 const ford = new CarCl('Ford', 120);
 console.log(ford.speedUS);
-ford.acclerate();
-ford.acclerate();
+ford.accelerate();
+ford.accelerate();
 ford.brake();
 ford.speedUS = 50;
 console.log(ford);
