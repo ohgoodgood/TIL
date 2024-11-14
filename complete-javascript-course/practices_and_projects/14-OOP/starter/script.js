@@ -400,10 +400,12 @@ class Account {
 
   deposit(val) {
     this.#movements.push(val);
+    return this;
   }
 
   withdraw(val) {
     this.deposit(-val);
+    return this;
   }
 
   // protected
@@ -415,7 +417,13 @@ class Account {
     if (this._approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved`);
+      return this;
     }
+  }
+
+  // static
+  static helper() {
+    console.log('this is a static helper method');
   }
 
   // 4) Private methods (not available yet)
@@ -429,15 +437,21 @@ console.log(acc1);
 
 // acc1._movements.push(250);
 // acc1._movements.push(-140);
+
 acc1.deposit(250);
 acc1.withdraw(140);
 acc1.requestLoan(1000);
 console.log(acc1.getMovements());
 console.log(acc1);
+Account.helper(); // static
 
 // console.log(acc1.#movements);
 // console.log(acc1.#pin);
 // console.log(acc1.#approveLoan(100));
+
+// Chaining
+acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
+console.log(acc1.getMovements());
 
 /////////////////////////////////////////////////////////////////////////////////////
 
